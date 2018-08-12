@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  industry: one
+  occupation: one
+
+two:
+  student: two
+  industry: two
+  occupation: two

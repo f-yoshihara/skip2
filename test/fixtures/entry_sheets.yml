@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  recruitment: one
+  status: 1
+  why: MyText
+  what: MyText
+  how: MyText
+
+two:
+  student: two
+  recruitment: two
+  status: 1
+  why: MyText
+  what: MyText
+  how: MyText

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @recruitment.company %>
+</p>
+
+<p>
+  <strong>Occupation:</strong>
+  <%= @recruitment.occupation %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @recruitment.status %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @recruitment.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @recruitment.body %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @recruitment.deadline %>
+</p>
+
+<%= link_to 'Edit', edit_recruitment_path(@recruitment) %> |
+<%= link_to 'Back', recruitments_path %>
