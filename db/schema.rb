@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_12_154407) do
+ActiveRecord::Schema.define(version: 2018_08_13_075532) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 2018_08_12_154407) do
     t.text "how"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.bigint "occupation_id"
+    t.index ["company_id"], name: "index_entry_sheets_on_company_id"
+    t.index ["occupation_id"], name: "index_entry_sheets_on_occupation_id"
     t.index ["recruitment_id"], name: "index_entry_sheets_on_recruitment_id"
     t.index ["student_id"], name: "index_entry_sheets_on_student_id"
   end
@@ -104,6 +108,8 @@ ActiveRecord::Schema.define(version: 2018_08_12_154407) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "entry_sheets", "companies"
+  add_foreign_key "entry_sheets", "occupations"
   add_foreign_key "entry_sheets", "recruitments"
   add_foreign_key "entry_sheets", "students"
   add_foreign_key "interests", "industries"
