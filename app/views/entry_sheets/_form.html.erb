@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :student_id %>
-    <%= form.text_field :student_id %>
-  </div>
+  <%# <div class="field"> %>
+    <%#= form.label :student_id %>
+    <%#= form.text_field :student_id %>
+  <%# </div> %>
 
   <div class="field">
     <%= form.label :recruitment_id %>
@@ -31,24 +31,26 @@
     <%= form.text_field :occupation_id %>
   </div>
 
-  <%# <div class="field"> %>
-    <%#= form.label :status %>
-    <%#= form.number_field :status %>
-  <%# </div> %>
-
   <div class="field">
-    <%= form.label :why %>
+    <%= form.label :why, '志望理由を教えてください。' %>
     <%= form.text_area :why %>
   </div>
 
   <div class="field">
-    <%= form.label :what %>
+    <%= form.label :what, '弊社に入って何がしたいですか？' %>
     <%= form.text_area :what %>
   </div>
 
   <div class="field">
-    <%= form.label :how %>
+    <%= form.label :how, 'それを実現するために何をしますか？' %>
     <%= form.text_area :how %>
+  </div>
+
+  <div class="field">
+    <%= form.label '下書き' %>
+    <%= form.radio_button :status, :draft %>
+    <%= form.label '公開' %>
+    <%= form.radio_button :status, :published %>
   </div>
 
   <div class="actions">
