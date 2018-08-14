@@ -1,4 +1,5 @@
 class Staff < ApplicationRecord
+  has_secure_password
   belongs_to :company
   has_many :recruitments, through: :company
   has_many :entry_sheets, through: :company

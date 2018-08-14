@@ -10,15 +10,25 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
+  <%# <div class="field"> %>
+    <%#= form.label :password_digest %>
+    <%#= form.text_field :password_digest %>
+  <%# </div> %>
+
   <div class="field">
-    <%= form.label :password_digest %>
-    <%= form.text_field :password_digest %>
+    <%= form.label :password, 'パスワード' %>
+    <%= form.text_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation, 'パスワード再入力' %>
+    <%= form.text_field :password_confirmation %>
   </div>
 
   <div class="field">

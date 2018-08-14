@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+  has_secure_password
   has_many :interests
   has_many :entry_sheets
   validates :family_name,
