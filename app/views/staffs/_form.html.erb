@@ -11,9 +11,20 @@
     </div>
   <% end %>
 
+  <h2>
+  <%= company.name %>
+  </h2>
+
   <div class="field">
-    <%= form.label :company_id %>
-    <%= form.text_field :company_id %>
+  <%# どうすれば@company.idの値をpostできるのかわからない。 %>
+    <%#= form.label :company_id %>
+    <%#= form.text_field :company_id %>
+    <%# if @company %>
+      <%= form.hidden_field :company_id, :value => company.id %>
+    <%# elsif %>
+      <%# binding.pry %>
+      <%#= form.hidden_field :company_id, :value => @company_id %>
+    <%# end %>
   </div>
 
   <div class="field">
