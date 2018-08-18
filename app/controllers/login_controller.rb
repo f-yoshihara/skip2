@@ -6,7 +6,7 @@ class LoginController < ApplicationController
    company = Company.find_by(name: params[:name])
   # companyインスタンスが作られていて、かつauthenticateできれば
    if company && company.authenticate(params[:password]) then
-     #reset_session
+     reset_session
      #セッションにcompanyの主キーを入れる。
      session[:company] = company.id
     # :refererにはflash[:referer]が入っているためnewの画面に戻れる。

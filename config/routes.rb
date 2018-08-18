@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   resources :industries
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'login/index'
+  get 'staff_login/index'
   post 'login/auth'
+  post 'staff_login/auth'
 end

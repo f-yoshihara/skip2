@@ -1,6 +1,6 @@
 class RecruitmentsController < ApplicationController
   before_action :set_recruitment, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_logined, only: [:new, :edit, :update, :destroy]
   # GET /recruitments
   # GET /recruitments.json
   def index
@@ -15,6 +15,8 @@ class RecruitmentsController < ApplicationController
   # GET /recruitments/new
   def new
     @recruitment = Recruitment.new
+    # occupationセレクトボックス作成用
+    @occupations = Occupation.all
   end
 
   # GET /recruitments/1/edit
@@ -24,7 +26,11 @@ class RecruitmentsController < ApplicationController
   # POST /recruitments
   # POST /recruitments.json
   def create
+
+    @staff = Staff.find(session[:staff])
+    recruitment_params['company_id'] = @staff.company_id
     @recruitment = Recruitment.new(recruitment_params)
+    binding.pry
 
     respond_to do |format|
       if @recruitment.save
@@ -70,5 +76,25 @@ class RecruitmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def recruitment_params
       params.require(:recruitment).permit(:company_id, :occupation_id, :status, :title, :body, :deadline)
+    end
+    # ログイン認証
+    def check_logined
+      # sessionに:companyがあるかどうかで条件分岐
+      if session[:staff] then
+        # begin...endで囲むと...の部分が最低一回は繰り返される。
+        begin
+          # 新たにインスタンスを作る
+          @staff = Staff.find(session[:staff])
+        # rescueで例外処理
+        rescue ActiveRecord::RecordNotFound
+          reset_session
+        end
+      end
+      # staffがなければ
+      unless @staff
+        # flashメソッドを使って現在地へのパスをredirect_toの先に渡している。
+        flash[:referer] = request.fullpath
+        redirect_to controller: :staff_login, action: :index
+      end
     end
 end

@@ -11,15 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :company_id %>
-    <%= form.text_field :company_id %>
-  </div>
+  <%#= form.hidden_field :company_id, :value => staff.company_id %>
 
+<%
+=begin
+%>
   <div class="field">
     <%= form.label :occupation_id %>
     <%= form.text_field :occupation_id %>
   </div>
+<%
+=end
+%>
+  <%= form.collection_select( :occupation_id, occupations, :id, :category) %>
 
   <div class="field">
     <%= form.label :title %>
