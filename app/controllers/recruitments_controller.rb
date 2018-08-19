@@ -30,7 +30,6 @@ class RecruitmentsController < ApplicationController
     @staff = Staff.find(session[:staff])
     recruitment_params['company_id'] = @staff.company_id
     @recruitment = Recruitment.new(recruitment_params)
-    binding.pry
 
     respond_to do |format|
       if @recruitment.save
