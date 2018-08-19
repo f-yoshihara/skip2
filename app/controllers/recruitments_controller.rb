@@ -26,9 +26,6 @@ class RecruitmentsController < ApplicationController
   # POST /recruitments
   # POST /recruitments.json
   def create
-
-    @staff = Staff.find(session[:staff])
-    recruitment_params['company_id'] = @staff.company_id
     @recruitment = Recruitment.new(recruitment_params)
 
     respond_to do |format|
