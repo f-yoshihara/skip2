@@ -10,7 +10,14 @@
   </head>
 
   <body>
-    <h1>test</h1>
+    <ul class="nav">
+      <%= link_to 'TOP', root_path%>
+      <%= link_to 'ログイン', login_index_path%>
+      <%= link_to 'ログアウト', login_logout_path%>
+      <%= link_to '新規登録', new_student_path%>
+      <%= link_to '採用担当者用新規登録', new_staff_path%>
+    </ul>
     <%= yield %>
   </body>
+  
 </html>
