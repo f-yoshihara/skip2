@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "octokit", "~> 4.0"
 gem 'config'
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+gem 'active_link_to'
 # gem 'netrc'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
