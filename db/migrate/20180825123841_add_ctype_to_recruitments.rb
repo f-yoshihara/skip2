@@ -1,0 +1,5 @@
+class AddCtypeToRecruitments < ActiveRecord::Migration[5.2]
+  def change
+    add_column :recruitments, :ctype, :string
+  end
+end
