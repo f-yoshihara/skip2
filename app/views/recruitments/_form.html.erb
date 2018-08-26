@@ -1,4 +1,4 @@
-<%= form_with(model: recruitment, local: true) do |form| %>
+<%= form_with(model: recruitment, local: true, mltipart: true) do |form| %>
   <% if recruitment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(recruitment.errors.count, "error") %> prohibited this recruitment from being saved:</h2>
@@ -38,6 +38,11 @@
   <div class="field">
     <%= form.label :deadline %>
     <%= form.date_select :deadline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo, 'PR画像:' %>
+    <%= form.file_field :photo%>
   </div>
 
   <div class="field">

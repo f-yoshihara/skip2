@@ -71,7 +71,7 @@ class RecruitmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recruitment_params
-      params.require(:recruitment).permit(:company_id, :occupation_id, :status, :title, :body, :deadline)
+      params.require(:recruitment).permit(:company_id, :occupation_id, :status, :title, :body, :deadline, :photo)
     end
     # ログイン認証
     def check_logined

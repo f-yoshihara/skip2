@@ -16,15 +16,7 @@
   </h2>
 
   <div class="field">
-  <%# どうすれば@company.idの値をpostできるのかわからない。 %>
-    <%#= form.label :company_id %>
-    <%#= form.text_field :company_id %>
-    <%# if @company %>
-      <%= form.hidden_field :company_id, :value => company.id %>
-    <%# elsif %>
-      <%# binding.pry %>
-      <%#= form.hidden_field :company_id, :value => @company_id %>
-    <%# end %>
+    <%= form.hidden_field :company_id, :value => company.id %>
   </div>
 
   <div class="field">
@@ -36,11 +28,6 @@
     <%= form.label :first_name, '名' %>
     <%= form.text_field :first_name %>
   </div>
-
-  <%# <div class="field"> %>
-    <%#= form.label :password_digest %>
-    <%#= form.text_field :password_digest %>
-  <%# </divs> %>
 
   <div class="field">
     <%= form.label :password, 'パスワード' %>
