@@ -67,11 +67,13 @@ class RecruitmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_recruitment
       @recruitment = Recruitment.find(params[:id])
+      # send_data @recruitment.photo, type: @recruitment.ctype, disposition: :inline
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recruitment_params
-      params.require(:recruitment).permit(:company_id, :occupation_id, :status, :title, :body, :deadline, :photo)
+      # StrongParametersに指定する場合バイナリはdata
+      params.require(:recruitment).permit(:company_id, :occupation_id, :status, :title, :body, :deadline, :data)
     end
     # ログイン認証
     def check_logined
