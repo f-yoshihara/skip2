@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'get_photo/index'
   root 'top#index'
   resources :interests
   resources :entry_sheets
@@ -14,4 +15,6 @@ Rails.application.routes.draw do
   get 'staff_login/index'
   post 'login/auth'
   post 'staff_login/auth'
+  get 'get_photo/index(/:id)'
+  # get 'recruitments/get_photo'
 end

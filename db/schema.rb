@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_25_124401) do
+ActiveRecord::Schema.define(version: 2018_08_29_034712) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2018_08_25_124401) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ctype"
-    t.binary "photo"
+    t.binary "photo", limit: 16777215
     t.index ["company_id"], name: "index_recruitments_on_company_id"
     t.index ["occupation_id"], name: "index_recruitments_on_occupation_id"
   end
