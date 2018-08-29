@@ -17,7 +17,7 @@
 
 <p>
   <strong>photo:</strong>
-  <%= image_tag(url_for(controller: :get_photo), :size => '100x100') %>
+  <%= image_tag(url_for(controller: :get_photo, :id => @recruitment), :size => '100x100') %>
   <%#= image_tag(url_for(@recruitment, action: :get_photo), :size => '100x100') %>
 </p>
 
