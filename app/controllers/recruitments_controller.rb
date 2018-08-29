@@ -11,6 +11,7 @@ class RecruitmentsController < ApplicationController
   # GET /recruitments/1
   # GET /recruitments/1.json
   def show
+    @url = url_for(controller: :get_photo, :id => @recruitment)
   end
 
   # GET /recruitments/new
