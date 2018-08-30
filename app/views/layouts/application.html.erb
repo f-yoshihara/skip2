@@ -11,24 +11,32 @@
 
   <body>
     <nav class="navbar navbar-default nav-fixed-top">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">skip</a>
-      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">skip</a>
+        </div>
 
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><%= link_to 'TOP', root_path%></li>
-          <li><%= link_to 'ログイン', login_index_path%></li>
-          <li><%= link_to 'ログアウト', login_logout_path%></li>
-          <li> <%= link_to '新規登録', new_student_path%></li>
-          <li><%= link_to '採用担当者用新規登録', new_staff_path%></li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><%= link_to 'TOP', root_path%></li>
+            <li><%= link_to 'ログイン', login_index_path%></li>
+            <li><%= link_to 'ログアウト', login_logout_path%></li>
+            <li><%= link_to '新規登録', new_student_path%></li>
+            <li><%= link_to '採用担当者用新規登録', new_staff_path%></li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="検索キーワード">
+            </div>
+            <button type="submit" class="btn btn-default">検索</button>
+          </form>
+        </div>
       </div>
     </nav>
   <%= yield %>
