@@ -15,6 +15,4 @@ Rails.application.routes.draw do
   get 'staff_login/index'
   post 'login/auth'
   post 'staff_login/auth'
-  get 'get_photo/index(/:id)'
-  # get 'recruitments/get_photo'
 end
