@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'recruitment_list/index'
   get 'get_photo/index'
   root 'top#index'
   resources :interests
