@@ -1,0 +1,21 @@
+<% if @result.to_sql != "SELECT `recruitments`.* FROM `recruitments`" %>
+  <div class = "col-10 card">
+    <div class="card-body"><%= '検索結果は' + @result_public_ary.size.to_s + '件でした。' %></div>
+  </div>
+<% end %>
+<% @result_public_ary.each do |result| %>
+  <div class="col-sm-6 mb-3">
+    <div class="card h-100">
+      <%= image_tag(url_for(controller: :get_photo, :id => result), class: :'card-img-toop', alt: :'Card image cap') %>
+      <%# <div style="height: 240px;"> %>
+        <div class="card-body" style="height: 240px;">
+          <h5 class="card-title"><%= result.title %></h5>
+          <p><%= result.company.name %></p>
+          <p><%= result.occupation.category %></p>
+          <%#<p class="card-text d-block h-30", style="overflow: hidden;"><%#%= result.body</p> %>
+          <p><%= result.deadline %></p>
+          <%= link_to '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right' %>
+        </div>
+    </div>
+  </div>
+<% end %>

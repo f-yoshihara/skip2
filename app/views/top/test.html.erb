@@ -1,0 +1,40 @@
+<div class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <% i = 0 %>
+    <% @recruitments.each do |recruitment| %>
+      <% if recruitment.status == 'published' %>
+      <% if i == 0 %>
+        <div class="carousel-item active">
+        <% i += 1 %>
+      <% else %>
+        <div class="carousel-item">
+      <% end %>
+          <%= image_tag(url_for(controller: :get_photo, :id => recruitment), class: :'d-block w-100', alt: recruitment) %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <% @recruitments.each do |recruitment| %>
+    <% if recruitment.status == 'published' %>
+      <%#= link_to (recruitment_path(recruitment)) do %>
+        <div class="col-sm-6 mb-3">
+          <div class="card h-100">
+            <%= image_tag(url_for(controller: :get_photo, :id => recruitment), class: :'card-img-toop', alt: :'Card image cap') %>
+            <%# <div style="height: 240px;"> %>
+              <div class="card-body" style="height: 240px;">
+                <h5 class="card-title"><%= recruitment.title %></h5>
+                <p><%= recruitment.company.name %></p>
+                <p><%= recruitment.occupation.category %></p>
+                <%#<p class="card-text d-block h-30", style="overflow: hidden;"><%#%= recruitment.body</p> %>
+                <p><%= recruitment.deadline %></p>
+                <%= link_to '詳細表示', recruitment_path(recruitment), class: :'btn btn-primary float-right' %>
+              </div>
+            <%# </div> %>
+          </div>
+        </div>
+      <%# end %>
+    <% end %>
+  <% end %>
+</div>
