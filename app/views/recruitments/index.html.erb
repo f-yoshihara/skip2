@@ -18,8 +18,8 @@
   <tbody>
     <% @recruitments.each do |recruitment| %>
       <tr>
-        <td><%= recruitment.company %></td>
-        <td><%= recruitment.occupation %></td>
+        <td><%= recruitment.company.name %></td>
+        <td><%= recruitment.occupation.category %></td>
         <td><%= recruitment.status %></td>
         <td><%= recruitment.title %></td>
         <td><%= recruitment.body %></td>
