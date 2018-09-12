@@ -32,6 +32,14 @@ gem 'config'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'active_link_to'
+gem 'omniauth'
+gem 'omniauth-line'
+gem 'devise'
+gem 'activeadmin'
+gem 'carrierwave', '~> 1.2', '>= 1.2.3'
+gem 'ransack', '~> 2.0', '>= 2.0.1'
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'simple_calendar', '~> 2.3'
 # gem 'netrc'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -78,4 +86,5 @@ group :development, :test do
   gem 'minitest'
   gem "faraday"
   gem "json"  
+  gem 'faker'
 end
