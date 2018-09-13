@@ -1,17 +1,13 @@
 <div class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-    <% i = 0 %>
-    <% @recruitments.each do |recruitment| %>
-      <% if recruitment.status == 'published' %>
+    <% @published_ary.each_with_index do |recruitment, i| %>
       <% if i == 0 %>
         <div class="carousel-item active">
-        <% i += 1 %>
       <% else %>
         <div class="carousel-item">
       <% end %>
           <%= image_tag(url_for(controller: :get_photo, :id => recruitment), class: :'d-block w-100', alt: recruitment) %>
         </div>
-      <% end %>
     <% end %>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -27,11 +23,8 @@
   <div class="col-2 bd-sidebar">
   <%= search_form_for(@q, :url => { :controller => :top, :action => :index }) do |f| %>
 
-  <%= f.label :title_cont %>
-  <%= f.search_field :title_cont %>
-
-  <%= f.label :body_cont %>
-  <%= f.search_field :body_cont %>
+  <%= f.label :フリーワード検索 %>
+  <%= f.search_field :title_or_body_cont %>
 
   <%= f.label :deadline %>
   <%= f.search_field :deadline %>
