@@ -1,6 +1,7 @@
 class TopController < ApplicationController
   def index
     @recruitments = Recruitment.all
+    @occupations = Occupation.all
     @published_ary = make_published_ary(@recruitments)
     @url = url_for(controller: :get_photo, :id => @recruitment)
     # ransack

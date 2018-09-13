@@ -23,11 +23,14 @@
   <div class="col-2 bd-sidebar">
   <%= search_form_for(@q, :url => { :controller => :top, :action => :index }) do |f| %>
 
+  <%= f.label :職種 %>
+  <%= f.collection_select( :occupation_id_eq, @occupations, :id, :category) %>
+
   <%= f.label :フリーワード検索 %>
   <%= f.search_field :title_or_body_cont %>
 
-  <%= f.label :deadline %>
-  <%= f.search_field :deadline %>
+  <%#= f.label :deadline %>
+  <%#= f.search_field :deadline %>
 
   <%= f.submit %>
 <% end %>
