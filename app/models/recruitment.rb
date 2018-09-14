@@ -1,5 +1,7 @@
 class Recruitment < ApplicationRecord
-  has_and_belongs_to_many :users
+  # has_and_belongs_to_many :users
+  has_many :stocks
+  has_many :users, through: :stocks
   belongs_to :company
   belongs_to :occupation
   has_many :entry_sheets

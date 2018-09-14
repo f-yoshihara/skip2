@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_065824) do
+ActiveRecord::Schema.define(version: 2018_09_14_084130) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -109,11 +109,6 @@ ActiveRecord::Schema.define(version: 2018_09_14_065824) do
     t.index ["occupation_id"], name: "index_recruitments_on_occupation_id"
   end
 
-  create_table "recruitments_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "recruitment_id", null: false
-  end
-
   create_table "social_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "provider"
@@ -145,6 +140,17 @@ ActiveRecord::Schema.define(version: 2018_09_14_065824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_staffs_on_company_id"
+  end
+
+  create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "recruitment_id"
+    t.boolean "stock"
+    t.boolean "entry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recruitment_id"], name: "index_stocks_on_recruitment_id"
+    t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -213,4 +219,6 @@ ActiveRecord::Schema.define(version: 2018_09_14_065824) do
   add_foreign_key "recruitments", "occupations"
   add_foreign_key "social_profiles", "users"
   add_foreign_key "staffs", "companies"
+  add_foreign_key "stocks", "recruitments"
+  add_foreign_key "stocks", "users"
 end
