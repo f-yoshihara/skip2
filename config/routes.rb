@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'session/new'
+  get 'session/destroy'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :users

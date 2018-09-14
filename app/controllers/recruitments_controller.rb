@@ -1,7 +1,7 @@
 class RecruitmentsController < ApplicationController
   before_action :set_recruitment, only: [:show, :edit, :update, :destroy]
   before_action :check_logined, only: [:new, :edit, :update, :destroy]
-  
+
   # GET /recruitments
   # GET /recruitments.json
   def index

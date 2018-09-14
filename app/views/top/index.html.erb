@@ -6,8 +6,8 @@
       <% else %>
         <div class="carousel-item">
       <% end %>
-          <%= image_tag(url_for(controller: :get_photo, :id => recruitment), class: :'d-block w-100', alt: recruitment) %>
-        </div>
+        <%= image_tag(url_for(controller: :get_photo, :id => recruitment), class: :'d-block w-100', alt: recruitment) %>
+      </div>
     <% end %>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -23,20 +23,20 @@
   <div class="col-2 bd-sidebar">
   <%= search_form_for(@q, :url => { :controller => :top, :action => :index }) do |f| %>
 
-  <%= f.label :職種 %>
-  <%= f.collection_select( :occupation_id_eq, @occupations, :id, :category) %>
+    <%= f.label :職種 %>
+    <%= f.collection_select( :occupation_id_eq, @occupations, :id, :category) %>
 
-  <%= f.label :フリーワード検索 %>
-  <%= f.search_field :title_or_body_cont %>
+    <%= f.label :フリーワード検索 %>
+    <%= f.search_field :title_or_body_cont %>
 
-  <%#= f.label :deadline %>
-  <%#= f.search_field :deadline %>
+    <%#= f.label :deadline %>
+    <%#= f.search_field :deadline %>
 
-  <%= f.submit %>
-<% end %>
-    <%= month_calendar do |date| %>
-      <%= date.day %>
-    <% end %>
+    <%= f.submit %>
+  <% end %>
+  <%= month_calendar do |date| %>
+    <%= date.day %>
+  <% end %>
   </div>
   <div class="row recruitment-cards col-10">
     <%= render 'results' %>
