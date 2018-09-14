@@ -9,6 +9,7 @@ class SocialProfile < ApplicationRecord
     self.access_secret = credentials['secret']
     self.credentials = credentials.to_json
     self.name = info['name']
+    self.image_url = info['image']
     self.set_values_by_raw_info(omniauth['extra']['raw_info'])
   end
 

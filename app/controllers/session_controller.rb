@@ -4,5 +4,6 @@ class SessionController < Devise::SessionsController
   end
 
   def destroy
+    
   end
 end
