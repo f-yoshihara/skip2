@@ -7,6 +7,6 @@ class StocksController < InheritedResources::Base
   private
 
     def stock_params
-      params.require(:stock).permit(:user_id, :recruitment_id, :stock, :entry)
+      params.require(:stock).permit(:user_id, :recruitment_id)
     end
 end

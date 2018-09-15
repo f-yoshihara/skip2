@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_084130) do
+ActiveRecord::Schema.define(version: 2018_09_15_024946) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -145,11 +145,10 @@ ActiveRecord::Schema.define(version: 2018_09_14_084130) do
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "recruitment_id"
-    t.boolean "stock"
-    t.boolean "entry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recruitment_id"], name: "index_stocks_on_recruitment_id"
+    t.index ["user_id", "recruitment_id"], name: "index_stocks_on_user_id_and_recruitment_id", unique: true
     t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 
