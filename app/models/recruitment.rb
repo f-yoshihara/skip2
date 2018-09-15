@@ -1,7 +1,8 @@
 class Recruitment < ApplicationRecord
   # has_and_belongs_to_many :users
   has_many :stocks, dependent: :destroy
-  has_many :users, through: :stocks
+  has_many :entries, dependent: :destroy
+  has_many :users, through: :entries
   belongs_to :company
   belongs_to :occupation
   has_many :entry_sheets
