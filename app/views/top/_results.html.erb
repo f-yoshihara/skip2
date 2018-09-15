@@ -15,7 +15,7 @@
           <%#<p class="card-text d-block h-30", style="overflow: hidden;"><%#%= result.body</p> %>
           <p><%= result.deadline %></p>
           <% if user_signed_in? %>
-            <%= link_to 'ストック', recruitment_path(result), class: :'btn btn-info float-right' %>
+            <%= link_to 'ストック', stocks_follow_path(result), class: :'btn btn-info float-right', entry: :true  %>
             <%= link_to '応募する', recruitment_path(result), class: :'btn btn-success float-right' %>
             <%= link_to '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right' %>
           <% else %>

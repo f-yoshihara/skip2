@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
 
   has_many :social_profiles, dependent: :destroy
-  has_many :stocks
+  has_many :stocks, dependent: :destroy
   has_many :recruitments, through: :stocks
   # has_and_belongs_to_many :recruitments
 

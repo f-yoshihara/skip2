@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'stocks/follow'
   resources :stocks
   get 'session/new'
   get 'session/destroy'
