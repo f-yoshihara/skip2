@@ -32,7 +32,7 @@
           </li>
           <% if current_user %>
             <li class="nav-item">
-              <a href="/users/<%= current_user.id %>" class="nav-link">マイページ</a>
+              <%= link_to 'マイページ', user_path(current_user), class: :'nav-link'%>
             </li>
           <% end %>
           <!-- <li class="nav-item dropdown">
