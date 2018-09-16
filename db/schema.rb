@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_16_081655) do
+ActiveRecord::Schema.define(version: 2018_09_16_084624) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -115,6 +115,13 @@ ActiveRecord::Schema.define(version: 2018_09_16_081655) do
     t.datetime "updated_at", null: false
     t.string "ctype"
     t.binary "photo", limit: 16777215
+    t.integer "capacity"
+    t.string "location"
+    t.text "question1"
+    t.text "question2"
+    t.text "question3"
+    t.text "question4"
+    t.text "question5"
     t.index ["company_id"], name: "index_recruitments_on_company_id"
     t.index ["occupation_id"], name: "index_recruitments_on_occupation_id"
   end
