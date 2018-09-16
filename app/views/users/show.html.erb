@@ -1,9 +1,26 @@
-<h1>ストック一覧</h1>
+<p>
+  <strong>氏名:</strong>
+  <%= @user.name %>
+</p>
+<p>
+  <strong>生年月日:</strong>
+  <%= @user.birth %>
+</p>
+<p>
+  <strong>学年:</strong>
+  <%= @user.school_year %>
+</p>
+<p>
+  <strong>学校名:</strong>
+  <%= @user.school_name %>
+</p>
+<%= link_to 'Edit', edit_user_path(@user) %>
+
+<h2>ストック一覧</h2>
 <% if @stocks.empty? %>
   <h2>まだストックはありません。</h2>
 <% else %>
   <% @stocks.each do |s| %>
-    <h2><%= s.recruitment.title %></h2>
-    <p><%= s.recruitment.body %></p>
+    <%= link_to "#{s.recruitment.title}", recruitment_path(s.recruitment_id) %>
   <% end %>
 <% end %>
