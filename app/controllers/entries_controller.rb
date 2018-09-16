@@ -1,4 +1,20 @@
 class EntriesController < InheritedResources::Base
+  def create
+    @user_id = current_user.id
+    @recruitment_id = params[:format]
+    @entry = Entry.new(user_id: @user_id, recruitment_id: @recruitment_id)
+    if @entry.save
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
+
+  end
+
+  def destroy
+    @entry = Entry.find_by(recruitment_id: params[:format])
+    @entry.destroy
+  end
 
   private
 

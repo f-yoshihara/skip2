@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'entries/destroy', to: 'entries#destroy'
+  get 'entries/create', to: 'entries#create'
   get 'stocks/destroy', to: 'stocks#destroy'
   get 'stocks/create', to: 'stocks#create'
   resources :entries
