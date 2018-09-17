@@ -18,23 +18,33 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <%= link_to 'ログイン', login_index_path, class: :'nav-link'%>
-          </li>
           <li class="nav-item">
             <%= link_to 'ログアウト', login_logout_path, class: :'nav-link'%>
           </li>
+
           <li class="nav-item">
             <%= link_to '新規登録', new_student_path, class: :'nav-link'%>
           </li>
+
           <li class="nav-item">
             <%= link_to '採用担当者新規登録', new_staff_path, class: :'nav-link'%>
           </li>
+
+          <li class="nav-item">
+            <%= link_to '企業担当者ログイン', staff_login_index_path, class: :'nav-link'%>
+          </li>
+        
           <% if current_user %>
             <li class="nav-item">
               <%= link_to 'マイページ', user_path(current_user), class: :'nav-link'%>
             </li>
+
+          <% else %>
+            <li class="nav-item active">
+              <%= link_to 'ログイン', login_index_path, class: :'nav-link'%>
+            </li>
           <% end %>
+
           <!-- <li class="nav-item dropdown">
             <%= link_to '業界', new_staff_path, class: :'nav-link dropdown-toggle', id: :navbarDropdown, role: :button, 'data-toggle': :dropdown, 'aria-haspopup': :true, 'aria-expanded': :false %> 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">

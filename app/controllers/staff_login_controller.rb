@@ -2,10 +2,11 @@ class StaffLoginController < ApplicationController
   #skip_before_action :check_logined
 
  def auth
-   staff = Staff.find_by(family_name: params[:family_name])
+   staff = Staff.find_by(email: params[:email])
    if staff && staff.authenticate(params[:password]) then
      reset_session
      session[:staff] = staff.id
+     binding.pry
      redirect_to params[:referer]
    else
      flash.now[:referer] = params[:referer]

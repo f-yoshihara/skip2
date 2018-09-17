@@ -1,8 +1,9 @@
 <p style="color: Red"><%= @error %></p>
 <%= form_tag action: :auth do %>
   <div class="field">
-    <%= label_tag :family_name, '苗字' %><br />
-    <%= text_field_tag :family_name, '', size: 20 %>
+    <%= label_tag :email, 'email' %><br />
+    <%# 第二引数にはvalueが入る %>
+    <%= text_field_tag :email, '', size: 20 %>
   </div>
   <div class="field">
     <%= label_tag :password, 'パスワード' %><br />
