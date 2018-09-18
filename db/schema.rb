@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_16_084624) do
+ActiveRecord::Schema.define(version: 2018_09_18_111529) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -149,13 +149,11 @@ ActiveRecord::Schema.define(version: 2018_09_16_084624) do
 
   create_table "staffs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "company_id"
-    t.string "family_name"
-    t.string "first_name"
     t.string "password_digest"
     t.string "email"
-    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["company_id"], name: "index_staffs_on_company_id"
   end
 

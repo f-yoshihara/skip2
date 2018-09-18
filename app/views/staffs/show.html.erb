@@ -6,13 +6,8 @@
 </p>
 
 <p>
-  <strong>Family name:</strong>
-  <%= @staff.family_name %>
-</p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @staff.first_name %>
+  <strong>name:</strong>
+  <%= @staff.name %>
 </p>
 
 <p>
@@ -25,10 +20,6 @@
   <%= @staff.email %>
 </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @staff.phone %>
-</p>
 
 <%= link_to 'Edit', edit_staff_path(@staff) %> |
 <%= link_to 'Back', staffs_path %>
