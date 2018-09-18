@@ -1,6 +1,6 @@
 class StaffsController < ApplicationController
   before_action :set_staff, only: [:show, :edit, :update, :destroy]
-  before_action :check_logined, only: [:new, :edit, :update, :destroy]
+  before_action :check_logined, only: [:edit, :update, :destroy]
 
   # GET /staffs
   # GET /staffs.json
@@ -16,6 +16,7 @@ class StaffsController < ApplicationController
   # GET /staffs/new
   def new
     @staff = Staff.new
+    @company = Company.find(session[:company])
   end
 
   # GET /staffs/1/edit
@@ -68,24 +69,44 @@ class StaffsController < ApplicationController
     end
 
     def check_logined
-      # sessionに:companyがあるかどうかで条件分岐
-      if session[:company] then
+      # sessionに:staffがあるかどうかで条件分岐
+      if session[:staff] then
         # begin...endで囲むと...の部分が最低一回は繰り返される。
         begin
           # 新たにインスタンスを作る
-          @company = Company.find(session[:company])
+          @staff = Staff.find(session[:staff])
         # rescueで例外処理
         rescue ActiveRecord::RecordNotFound
           reset_session
         end
       end
-      # companyがなければ、、
-      unless @company
+      # staffがなければ、、
+      unless @staff
         # flashメソッドを使って現在地へのパスをredirect_toの先に渡している。
         flash[:referer] = request.fullpath
         redirect_to controller: :login, action: :index
       end
     end
+
+    # def check_logined
+    #   # sessionに:companyがあるかどうかで条件分岐
+    #   if session[:company] then
+    #     # begin...endで囲むと...の部分が最低一回は繰り返される。
+    #     begin
+    #       # 新たにインスタンスを作る
+    #       @company = Company.find(session[:company])
+    #     # rescueで例外処理
+    #     rescue ActiveRecord::RecordNotFound
+    #       reset_session
+    #     end
+    #   end
+    #   # companyがなければ、、
+    #   unless @company
+    #     # flashメソッドを使って現在地へのパスをredirect_toの先に渡している。
+    #     flash[:referer] = request.fullpath
+    #     redirect_to controller: :login, action: :index
+    #   end
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
