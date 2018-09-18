@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'staff_signup/index'
+  get 'company_login/index'
+  get 'company_login/index'
+  post 'company_login/auth'
+  get 'company_login/logout'
   get 'entries/destroy', to: 'entries#destroy'
   get 'entries/create', to: 'entries#create'
   get 'stocks/destroy', to: 'stocks#destroy'
