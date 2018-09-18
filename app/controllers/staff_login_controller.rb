@@ -6,7 +6,6 @@ class StaffLoginController < ApplicationController
    if staff && staff.authenticate(params[:password]) then
      reset_session
      session[:staff] = staff.id
-     binding.pry
      redirect_to params[:referer]
    else
      flash.now[:referer] = params[:referer]

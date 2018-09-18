@@ -34,11 +34,20 @@
   <strong>Deadline:</strong>
   <%= @recruitment.deadline %>
 </p>
+  
+<% if @recruitment.question1 %>
+  <p>
+    <strong>質問①:</strong>
+    <%= @recruitment.question1 %>
+  </p>
+<% end %>
 
-<p>
-  <strong>質問①:</strong>
-  <%= @recruitment.question1 %>
-</p>
+<% if @recruitment.question1 %>
+  <p>
+    <strong>質問②:</strong>
+    <%= @recruitment.question2 %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_recruitment_path(@recruitment) %> |
 <%= link_to 'Back', recruitments_path %>

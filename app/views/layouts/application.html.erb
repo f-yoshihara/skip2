@@ -30,9 +30,16 @@
             <%= link_to '採用担当者新規登録', new_staff_path, class: :'nav-link'%>
           </li>
 
-          <li class="nav-item">
-            <%= link_to '企業担当者ログイン', staff_login_index_path, class: :'nav-link'%>
-          </li>
+          <% if session[:staff] %>
+            <li class="nav-item">
+              <%= link_to '採用者用管理ページ', recruitment_list_index_path, class: :'nav-link'%>
+            </li>
+
+          <% else %>
+            <li class="nav-item">
+              <%= link_to '企業担当者ログイン', staff_login_index_path, class: :'nav-link'%>
+            </li>
+          <% end %>
         
           <% if current_user %>
             <li class="nav-item">

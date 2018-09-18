@@ -10,6 +10,9 @@
         <%= image_tag(url_for(controller: :get_photo, :id => recruitment), :size => '100x100') %>
         <p><%= recruitment.body %></p>
         <p><%= recruitment.deadline %></p>
+        <p><%= link_to 'Show', recruitment %></p>
+        <p><%= link_to 'Edit', edit_recruitment_path(recruitment) %></p>
+        <p><%= link_to 'Destroy', recruitment, method: :delete, data: { confirm: '本当に削除してよろしいですか?' } %></p>
       <%# </tr> %>
       </div>
     </article>
