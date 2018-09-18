@@ -29,7 +29,7 @@ class StaffsController < ApplicationController
     @staff = Staff.new(staff_params)
     respond_to do |format|
       if @staff.save
-        format.html { redirect_to @staff, notice: 'Staff was successfully created.' }
+        format.html { redirect_to recruitment_list_index_path, notice: "#{'ようこそ' + @staff.name + 'さん'}" }
         format.json { render :show, status: :created, location: @staff }
       else
         format.html { render :new }
