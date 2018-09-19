@@ -10,6 +10,7 @@ class RecruitmentsController < ApplicationController
 
   # GET /recruitments/1
   # GET /recruitments/1.json
+
   def show
     @url = url_for(controller: :get_photo, :id => @recruitment)
   end
@@ -73,6 +74,7 @@ class RecruitmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_recruitment
       @recruitment = Recruitment.find(params[:id])
+      @occupations = Occupation.all
       # send_data @recruitment.photo, type: @recruitment.ctype, disposition: :inline
       # binding.pry
     end
