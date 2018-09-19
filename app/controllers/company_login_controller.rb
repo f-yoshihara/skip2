@@ -11,7 +11,7 @@ class CompanyLoginController < ApplicationController
       #セッションにcompanyの主キーを入れる。
       session[:company] = company.id
      # :refererにはflash[:referer]が入っているためnewの画面に戻れる。
-      redirect_to new_staff_path
+      redirect_to new_staff_path(session[:company])
     else
       flash.now[:referer] = params[:referer]
       @error = 'ユーザ名／パスワードが間違っています。'

@@ -15,8 +15,8 @@ class StaffsController < ApplicationController
 
   # GET /staffs/new
   def new
+    @company = Company.find(params[:format]) 
     @staff = Staff.new
-    @company = Company.find(session[:company])
   end
 
   # GET /staffs/1/edit
