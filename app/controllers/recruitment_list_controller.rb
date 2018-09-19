@@ -6,7 +6,5 @@ class RecruitmentListController < ApplicationController
     else
       @recruitments = Recruitment.where(company_id: session[:company])
     end
-    
-    # binding.pry
   end
 end
