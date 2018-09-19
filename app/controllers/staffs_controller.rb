@@ -27,14 +27,12 @@ class StaffsController < ApplicationController
   # POST /staffs.json
   def create
     @staff = Staff.new(staff_params)
-    respond_to do |format|
-      if @staff.save
-        format.html { redirect_to recruitment_list_index_path, notice: "#{'ようこそ' + @staff.name + 'さん'}" }
-        format.json { render :show, status: :created, location: @staff }
-      else
-        format.html { render :new }
-        format.json { render json: @staff.errors, status: :unprocessable_entity }
-      end
+    if @staff.save
+      reset_session
+      session[:staff] = @staff.id
+      redirect_to recruitment_list_index_path
+    else
+      redirect_to root_path
     end
   end
 
