@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_18_111529) do
+ActiveRecord::Schema.define(version: 2018_09_20_080715) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -57,6 +57,12 @@ ActiveRecord::Schema.define(version: 2018_09_18_111529) do
     t.bigint "recruitment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
+    t.text "answer1"
+    t.text "answer2"
+    t.text "answer3"
+    t.text "answer4"
+    t.text "answer5"
     t.index ["recruitment_id"], name: "index_entries_on_recruitment_id"
     t.index ["user_id", "recruitment_id"], name: "index_entries_on_user_id_and_recruitment_id", unique: true
     t.index ["user_id"], name: "index_entries_on_user_id"
@@ -116,12 +122,14 @@ ActiveRecord::Schema.define(version: 2018_09_18_111529) do
     t.string "ctype"
     t.binary "photo", limit: 16777215
     t.integer "capacity"
-    t.string "location"
     t.text "question1"
     t.text "question2"
     t.text "question3"
     t.text "question4"
     t.text "question5"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
     t.index ["company_id"], name: "index_recruitments_on_company_id"
     t.index ["occupation_id"], name: "index_recruitments_on_occupation_id"
   end

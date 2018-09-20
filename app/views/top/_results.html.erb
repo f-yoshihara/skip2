@@ -18,7 +18,7 @@
           <p>現在のストック数 <%= result.stocks.size %></p>
           <% if user_signed_in? %>
             <%= link_to 'ストック', "#{current_user.stocks.where(recruitment_id: result).exists? ? stocks_destroy_path(result) : stocks_create_path(result)}", class: :'btn btn-info float-right' %>
-            <%= link_to '応募する', "#{current_user.entries.where(recruitment_id: result).exists? ? entries_destroy_path(result) : entries_create_path(result)}", class: :'btn btn-success float-right' %>
+            <%= link_to '応募する', "#{current_user.entries.where(recruitment_id: result).exists? ? entries_destroy_path(result) : new_entry_path(result)}", class: :'btn btn-success float-right' %>
             <%= link_to '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right' %>
           <% else %>
             <%= link_to 'ストック', login_index_path(result), class: :'btn btn-info float-right' %>

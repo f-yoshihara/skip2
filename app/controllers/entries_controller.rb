@@ -1,4 +1,10 @@
 class EntriesController < InheritedResources::Base
+  def new
+    @entry = Entry.new
+    # @recruitment_id = params[:format]
+    @recruitment = Recruitment.find(params[:format])
+  end
+
   def create
     @user_id = current_user.id
     @recruitment_id = params[:format]
@@ -8,7 +14,6 @@ class EntriesController < InheritedResources::Base
     else
       redirect_to root_path
     end
-
   end
 
   def destroy
