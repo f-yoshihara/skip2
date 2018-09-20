@@ -24,6 +24,31 @@
   </div>
 
   <div class="field">
+    <%= form.label :郵便番号 %>
+    <%= form.text_field :address_zipcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :都道府県 %>
+    <%= form.text_field :prefecture %>
+  </div>
+
+  <div class="field">
+    <%= form.label :市区町村 %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :番地 %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div class="field">
+    <%= form.label :建物名 %>
+    <%= form.text_field :building %>
+  </div>
+
+  <div class="field">
     <%= form.label :data, 'PR画像:' %>
     <%= form.file_field :data%>
   </div>
