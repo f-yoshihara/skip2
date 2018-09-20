@@ -7,7 +7,7 @@ $ ->
     postcode : [ "#recruitment_address_zipcode" ],
     address  : {
                   "#recruitment_prefecture" : "%3", 
-                  "#recruitment_city"            : "%4%5", 
-                  "#recruitment_street"          : "%6%7" 
+                  "#recruitment_city"            : "%4", 
+                  "#recruitment_street"          : "%5%6%7" 
                 }
   })

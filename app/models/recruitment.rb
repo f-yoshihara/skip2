@@ -17,6 +17,12 @@ class Recruitment < ApplicationRecord
   validates :deadline,
     presence: true
   validate :file_invalid?
+  validates :prefecture,
+  presence: true
+  validates :city,
+  presence: true
+  validates :street,
+  presence: true
 
   # ここは自動的に通過する。dataというパラメータがあれば
   def data=(data)
