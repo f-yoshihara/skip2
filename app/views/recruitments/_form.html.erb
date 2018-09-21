@@ -23,11 +23,7 @@
 
   <div class="field">
     <%= form.label :職種 %>
-    <% if occupations %>
-      <%= form.collection_select( :occupation_id, occupations, :id, :category) %>
-    <% else %>
-      <%= form.collection_select( :occupation_id, recruitment.occupation_id, :id, :category) %>
-    <% end %>
+    <%= form.collection_select( :occupation_id, occupations, :id, :category) %>
   </div>
 
   <div class="field">

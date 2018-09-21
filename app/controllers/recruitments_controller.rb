@@ -29,6 +29,7 @@ class RecruitmentsController < ApplicationController
   # POST /recruitments
   # POST /recruitments.json
   def create
+    @occupations = Occupation.all
     @recruitment = Recruitment.new(recruitment_params)
 
     respond_to do |format|
