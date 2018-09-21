@@ -6,13 +6,16 @@ class EntriesController < InheritedResources::Base
   end
 
   def create
-    @user_id = current_user.id
-    @recruitment_id = params[:format]
-    @entry = Entry.new(user_id: @user_id, recruitment_id: @recruitment_id)
-    if @entry.save
-      redirect_to root_path
-    else
-      redirect_to root_path
+    @entry = Entry.new(entry_params)
+
+    respond_to do |format|
+      if @entry.save
+        format.html { redirect_to @entry, notice: '応募が完了しました。' }
+        format.json { render :show, status: :created, location: @entry }
+      else
+        format.html { render :new }
+        format.json { render json: @entry.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -24,7 +27,7 @@ class EntriesController < InheritedResources::Base
   private
 
     def entry_params
-      params.require(:entry).permit(:user_id, :recruitment_id)
+      params.require(:entry).permit(:user_id, :recruitment_id, :status, :answer1, :answer2, :answer3, :answer4, :answer5 )
     end
 end
 

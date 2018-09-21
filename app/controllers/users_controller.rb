@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @stocks = @user.stocks
+    @entries = @user.entries
   end
 
   def edit

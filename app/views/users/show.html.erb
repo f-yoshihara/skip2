@@ -27,6 +27,19 @@
   <h2>まだストックはありません。</h2>
 <% else %>
   <% @stocks.each do |s| %>
+  <p>
     <%= link_to "#{s.recruitment.title}", recruitment_path(s.recruitment_id) %>
+  </p>
+  <% end %>
+<% end %>
+
+<h2>応募履歴一覧</h2>
+<% if @entries.empty? %>
+  <h2>まだ応募履歴がありません。</h2>
+<% else %>
+  <% @entries.each do |entry| %>
+  <p>
+    <%= link_to "#{entry.recruitment.title}", recruitment_path(entry.recruitment_id) %>
+  </p>
   <% end %>
 <% end %>
