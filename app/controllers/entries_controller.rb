@@ -6,6 +6,7 @@ class EntriesController < InheritedResources::Base
   end
 
   def create
+    @recruitment = Recruitment.find(entry_params[:recruitment_id])
     @entry = Entry.new(entry_params)
 
     respond_to do |format|

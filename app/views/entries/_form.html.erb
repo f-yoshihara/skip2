@@ -20,6 +20,8 @@
       <%= form.label "#{recruitment.question1}" %>
       <%= form.text_area :answer1 %>
     </div>
+  <% else %>
+    <%= form.hidden_field :answer1, :value => "質問が設定されていません。" %>
   <% end %>
 
   <% unless recruitment.question2.empty? %>
@@ -27,6 +29,8 @@
       <%= form.label "#{recruitment.question2}" %>
       <%= form.text_area :answer2 %>
     </div>
+  <% else %>
+    <%= form.hidden_field :answer2, :value => "質問が設定されていません。" %>
   <% end %>
 
   <% unless recruitment.question3.empty? %>
@@ -34,6 +38,8 @@
       <%= form.label "#{recruitment.question3}" %>
       <%= form.text_area :answer3 %>
     </div>
+  <% else %>
+    <%= form.hidden_field :answer3, :value => "質問が設定されていません。" %>
   <% end %>
 
   <% unless recruitment.question4.empty? %>
@@ -41,6 +47,8 @@
       <%= form.label "#{recruitment.question4}" %>
       <%= form.text_area :answer4 %>
     </div>
+  <% else %>
+    <%= form.hidden_field :answer4, :value => "質問が設定されていません。" %>
   <% end %>
 
   <% unless recruitment.question5.empty? %>
@@ -48,6 +56,8 @@
       <%= form.label "#{recruitment.question5}" %>
       <%= form.text_area :answer5 %>
     </div>
+  <% else %>
+    <%= form.hidden_field :answer5, :value => "質問が設定されていません。" %>
   <% end %>
 
   <div class="field">
