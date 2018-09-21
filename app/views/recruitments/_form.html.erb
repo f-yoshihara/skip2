@@ -10,8 +10,11 @@
       </ul>
     </div>
   <% end %>
-
-  <%= form.hidden_field :company_id, :value => staff.company_id %>
+  <% if staff %>
+    <%= form.hidden_field :company_id, :value => staff.company_id %>
+  <% else %>
+    <%= form.hidden_field :company_id, :value => recruitment.company_id %>
+  <% end %>
 
   <div class="field">
     <%= form.label :タイトル %>
@@ -20,7 +23,11 @@
 
   <div class="field">
     <%= form.label :職種 %>
-    <%= form.collection_select( :occupation_id, occupations, :id, :category) %>
+    <% if occupations %>
+      <%= form.collection_select( :occupation_id, occupations, :id, :category) %>
+    <% else %>
+      <%= form.collection_select( :occupation_id, recruitment.occupation_id, :id, :category) %>
+    <% end %>
   </div>
 
   <div class="field">

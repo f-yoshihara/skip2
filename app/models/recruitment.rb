@@ -32,8 +32,10 @@ class Recruitment < ApplicationRecord
 
   private
     def file_invalid?
-      ps = ['image/jpeg', 'image/gif', 'image/png']
-      errors.add(:photo, 'は画像ファイルではありません。') if !ps.include?(self.ctype)
-      errors.add(:photo, 'のサイズが1MBを超えています。') if self.photo.size > 1.megabyte
+      if self.photo
+        ps = ['image/jpeg', 'image/gif', 'image/png']
+        errors.add(:photo, 'は画像ファイルではありません。') if !ps.include?(self.ctype)
+        errors.add(:photo, 'のサイズが1MBを超えています。') if self.photo.size > 1.megabyte
+      end
     end
 end
