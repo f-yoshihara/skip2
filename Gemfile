@@ -40,6 +40,7 @@ gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'ransack', '~> 2.0', '>= 2.0.1'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'simple_calendar', '~> 2.3'
+gem 'record_tag_helper', '~> 1.0'
 # gem 'netrc'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
