@@ -14,18 +14,17 @@
           <p><%= result.occupation.category %></p>
           <%#<p class="card-text d-block h-30", style="overflow: hidden;"><%#%= result.body</p> %>
           <p><%= result.deadline %></p>
-          <p>現在の応募者数 <%= result.entries.size %>人</p>
-          <p>現在のストック数 <%= result.stocks.size %></p>
-          <% if user_signed_in? %>
-
-            <%= link_to 'ストック', "#{current_user.stocks.where(recruitment_id: result).exists? ? stocks_destroy_path(result) : stocks_create_path(result)}", class: :'btn btn-info float-right', id: "#{result.id}", remote: true %>
-            <%= link_to '応募する', "#{current_user.entries.where(recruitment_id: result).exists? ? entries_destroy_path(result) : new_entry_path(result)}", class: :'btn btn-success float-right entry_btn' %>
-            <%= link_to '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right' %>
-          <% else %>
-            <%= link_to 'ストック', login_index_path(result), class: :'btn btn-info float-right' %>
-            <%= link_to '応募する', login_index_path(result), class: :'btn btn-success float-right' %>
-            <%= link_to '詳細表示', login_index_path(result), class: :'btn btn-primary float-right' %>
-          <% end %>
+          <div class = "d-flex">
+            <div id = "recruitment_status">
+              <p>現在の応募者数 <%= result.entries.size %>人</p>
+              <p>現在のストック数 <%= result.stocks.size %></p>
+            </div>
+            <div class = "btn">
+              <%= link_to_if(user_signed_in?, 'ストック', "#{current_user.stocks.where(recruitment_id: result).exists? ? stocks_destroy_path(result) : stocks_create_path(result)}", class: :'btn btn-info float-right', id: "#{result.id}", remote: true) %>
+              <%= link_to_if(user_signed_in?, '応募する', "#{current_user.entries.where(recruitment_id: result).exists? ? entries_destroy_path(result) : new_entry_path(result)}", class: :'btn btn-success float-right entry_btn') %>
+              <%= link_to_if(user_signed_in?, '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right') %>
+            </div>
+          </div>
         </div>
     </div>
   </div>

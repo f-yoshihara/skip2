@@ -1,3 +1,25 @@
+<%
+=begin
+%>
 $('#<%= @recruitment_id %>').html(
   "<%= escape_javascript('ストック済み') %>"
+);
+
+
+$('#<%= @recruitment_id %>').attr({
+  text: "<%= escape_javascript('ストック済み') %>"
+  href: '/stocks/destroy<%= @recruitment_id %>',
+});
+
+
+<%
+=end
+%>
+
+$('#<%= @recruitment_id %>').html(
+  "<%= escape_javascript('ストック済み') %>"
+);
+
+$('#<%= @recruitment_id %>').attr(
+  'href', "<%= escape_javascript('/stocks/destroy' + @recruitment_id) %>"
 );
