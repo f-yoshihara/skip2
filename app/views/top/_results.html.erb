@@ -7,12 +7,10 @@
   <div class="col-sm-6 mb-3">
     <div class="card h-100">
       <%= image_tag(url_for(controller: :get_photo, :id => result), class: :'card-img-toop', alt: :'Card image cap') %>
-      <%# <div style="height: 240px;"> %>
         <div class="card-body" style="height: 240px;">
           <h5 class="card-title"><%= result.title %></h5>
           <p><%= result.company.name %></p>
           <p><%= result.occupation.category %></p>
-          <%#<p class="card-text d-block h-30", style="overflow: hidden;"><%#%= result.body</p> %>
           <p><%= result.deadline %></p>
           <div class = "d-flex">
             <div id = "recruitment_status">
@@ -20,9 +18,9 @@
               <p>現在のストック数 <%= result.stocks.size %></p>
             </div>
             <div class = "btn">
-              <%= link_to_if(user_signed_in?, 'ストック', "#{current_user.stocks.where(recruitment_id: result).exists? ? stocks_destroy_path(result) : stocks_create_path(result)}", class: :'btn btn-info float-right', id: "#{result.id}", remote: true) %>
-              <%= link_to_if(user_signed_in?, '応募する', "#{current_user.entries.where(recruitment_id: result).exists? ? entries_destroy_path(result) : new_entry_path(result)}", class: :'btn btn-success float-right entry_btn') %>
-              <%= link_to_if(user_signed_in?, '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right') %>
+              <%= link_to_if(user_signed_in?, btn_text(result, 'ストック'), "#{current_user.stocks.where(recruitment_id: result).exists? ? stocks_destroy_path(result) : stocks_create_path(result)}", class: :'btn btn-success float-right', id: "#{result.id}", remote: true) %>
+              <%= link_to_if(user_signed_in?, btn_text(result, '応募'), "#{current_user.entries.where(recruitment_id: result).exists? ? entries_destroy_path(result) : new_entry_path(result)}", class: :'btn btn-info float-right entry_btn') %>
+              <%= link_to '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right' %>
             </div>
           </div>
         </div>

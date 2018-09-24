@@ -12,13 +12,6 @@ class TopController < ApplicationController
     # view表示のロジック
     result_ary = @result.to_a
     @result_public_ary = make_published_ary(result_ary)
-    # @result_public_ary = []
-    # result_ary.each do |result|
-    #   if result.status == 'published'
-    #     @result_public_ary << result
-    #   end
-    # end
-
   end
 
   def about
