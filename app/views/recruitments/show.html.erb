@@ -1,40 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Company:</strong>
+<h1>
   <%= @recruitment.company.name %>
-</p>
+</h1>
 
 <p>
-  <strong>Occupation:</strong>
+  <strong>職種:</strong>
   <%= @recruitment.occupation.category %>
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @recruitment.status %>
-</p>
-
-<p>
-  <strong>photo:</strong>
   <%= image_tag(@url, :size => '100x100') %>
 </p>
 
-<p>
-  <strong>Title:</strong>
+<h1>
   <%= @recruitment.title %>
-</p>
+</h1>
 
 <p>
-  <strong>Body:</strong>
   <%= @recruitment.body %>
 </p>
 
 <p>
-  <strong>Deadline:</strong>
+  <strong>応募締め切り:</strong>
   <%= @recruitment.deadline %>
 </p>
   
+<%
+=begin
+%>
 <% if @recruitment.question1 %>
   <p>
     <strong>質問①:</strong>
@@ -49,5 +43,15 @@
   </p>
 <% end %>
 
+<p>
+  <strong>Status:</strong>
+  <%= @recruitment.status %>
+</p>
+
 <%= link_to 'Edit', edit_recruitment_path(@recruitment) %> |
 <%= link_to 'Back', recruitments_path %>
+
+<%
+=end
+%>  
+
