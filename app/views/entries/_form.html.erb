@@ -15,7 +15,7 @@
 
   <%= form.hidden_field :recruitment_id, :value => recruitment.id %>
 
-  <% unless recruitment.question1.empty? %>
+  <% unless recruitment.question1.blank? %>
     <div class="field">
       <%= form.label "#{recruitment.question1}" %>
       <%= form.text_area :answer1 %>
@@ -24,7 +24,7 @@
     <%= form.hidden_field :answer1, :value => "質問が設定されていません。" %>
   <% end %>
 
-  <% unless recruitment.question2.empty? %>
+  <% unless recruitment.question2.blank? %>
     <div class="field">
       <%= form.label "#{recruitment.question2}" %>
       <%= form.text_area :answer2 %>
@@ -33,7 +33,7 @@
     <%= form.hidden_field :answer2, :value => "質問が設定されていません。" %>
   <% end %>
 
-  <% unless recruitment.question3.empty? %>
+  <% unless recruitment.question3.blank? %>
     <div class="field">
       <%= form.label "#{recruitment.question3}" %>
       <%= form.text_area :answer3 %>
@@ -42,7 +42,7 @@
     <%= form.hidden_field :answer3, :value => "質問が設定されていません。" %>
   <% end %>
 
-  <% unless recruitment.question4.empty? %>
+  <% unless recruitment.question4.blank? %>
     <div class="field">
       <%= form.label "#{recruitment.question4}" %>
       <%= form.text_area :answer4 %>
@@ -51,7 +51,7 @@
     <%= form.hidden_field :answer4, :value => "質問が設定されていません。" %>
   <% end %>
 
-  <% unless recruitment.question5.empty? %>
+  <% unless recruitment.question5.blank? %>
     <div class="field">
       <%= form.label "#{recruitment.question5}" %>
       <%= form.text_area :answer5 %>
