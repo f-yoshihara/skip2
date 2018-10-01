@@ -7,25 +7,44 @@
   <div class="col-sm-6 mb-3">
     <div class="card h-100">
       <%= image_tag(url_for(controller: :get_photo, :id => result), class: :'card-img-toop', alt: :'Card image cap') %>
-        <div class="card-body" style="height: 240px;">
-          <h5 class="card-title"><%= result.title %></h5>
-          <p><%= result.company.name %></p>
-          <p><%= result.occupation.category %></p>
-          <p><%= result.deadline %></p>
-          <div class = "d-flex">
-            <div id = "recruitment_status">
-              <p>現在の応募者数 <%= result.entries.size %>人</p>
-              <p>現在のストック数 <%= result.stocks.size %></p>
-            </div>
-            <div class = "btn">
-              <%#= link_to_if(user_signed_in?, btn_text(result, 'ストック'), "#{current_user && current_user.stocks.where(recruitment_id: result).exists? ? stocks_destroy_path(result) : stocks_create_path(result)}", class: :'btn btn-success float-right', id: "#{result.id}", remote: true){} %>
-              <%#= link_to_if(user_signed_in?, btn_text(result, '応募'), "#{current_user && current_user.entries.where(recruitment_id: result).exists? ? entries_destroy_path(result) : new_entry_path(result)}", class: :'btn btn-info float-right entry_btn'){} %>
-              <%= link_to_if(user_signed_in?, btn_text(result, 'stocks', 'ストック'), btn_url(result, 'stocks'), class: :'btn btn-success float-right', id: "#{result.id}", remote: true) {} %>
-              <%= link_to_if(user_signed_in?, btn_text(result, 'entries', '応募'), btn_url(result, 'entries'), class: :'btn btn-info float-right entry_btn', id: "#{result.id}") {} %>
-              <%= link_to '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right' %>
-            </div>
+      <div class="card-body" style="height: 240px;">
+        <h5 class="card-title"><%= result.title %></h5>
+        <p><%= result.company.name %></p>
+        <p><%= result.occupation.category %></p>
+        <p><%= result.deadline %></p>
+        <div class = "d-flex">
+          <div id = "recruitment_status">
+            <p>現在の応募者数 <%= result.entries.size %>人</p>
+            <p>現在のストック数 <%= result.stocks.size %></p>
           </div>
+          <div class = "btn">
+          <%= link_to '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right' %>
+          </div>
+          <% if current_user %>
+            <% if current_user.stocks.where(recruitment_id: result).exists? %>
+              <div class = "btn">
+                <%= link_to('ストック済み', stocks_destroy_path(result), class: :'btn btn-success float-right', id: "#{result.id}", remote: true) %>
+              </div>
+
+            <% else %>
+              <div class = "btn">
+                <%= link_to('ストックする', stocks_create_path(result), class: :'btn btn-success float-right', id: "#{result.id}", remote: true) %>
+              </div>
+            <% end %>
+
+            <% if current_user.entries.where(recruitment_id: result).exists? %>
+              <div class = "btn">
+                <%= link_to('応募済み', entries_destroy_path(result), class: :'btn btn-secondary float-right', id: "#{result.id}", disabled: :disabled) %>
+              </div>
+
+            <% else %>
+              <div class = "btn">
+                <%= link_to('応募する', new_entry_path(result), class: :'btn btn-info float-right', id: "#{result.id}") %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
+      </div>
     </div>
   </div>
 <% end %>
