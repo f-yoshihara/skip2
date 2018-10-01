@@ -34,12 +34,12 @@
 
             <% if current_user.entries.where(recruitment_id: result).exists? %>
               <div class = "btn">
-                <%= link_to('応募済み', entries_destroy_path(result), class: :'btn btn-secondary float-right', id: "#{result.id}", disabled: :disabled) %>
+                <%= link_to('応募済み', entries_destroy_path(result), class: :'btn btn-secondary float-right', disabled: :disabled) %>
               </div>
 
             <% else %>
               <div class = "btn">
-                <%= link_to('応募する', new_entry_path(result), class: :'btn btn-info float-right', id: "#{result.id}") %>
+                <%= link_to('応募する', new_entry_path(result), class: :'btn btn-info float-right') %>
               </div>
             <% end %>
           <% end %>
