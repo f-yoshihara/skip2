@@ -1,4 +1,9 @@
 class StocksController < InheritedResources::Base
+  def index
+    @user_id = params[:id]
+    @stocks = Stock.where(user_id: @user_id)
+  end
+
   def create
     @user_id = current_user.id
     @recruitment_id = params[:format]
@@ -8,7 +13,7 @@ class StocksController < InheritedResources::Base
 
   def destroy
     @recruitment_id = params[:format]
-    @stock = Stock.find_by(recruitment_id: params[:format])
+    @stock = Stock.find_by(recruitment_id: @recruitment_id)
     @stock.destroy
   end
 

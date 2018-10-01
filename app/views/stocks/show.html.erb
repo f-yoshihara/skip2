@@ -2,23 +2,14 @@
 
 <p>
   <strong>User:</strong>
-  <%= @stock.user %>
+  <%= @stock.user.id %>
 </p>
 
 <p>
   <strong>Recruitment:</strong>
-  <%= @stock.recruitment %>
+  <%= @stock.recruitment.id %>
 </p>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @stock.stock %>
-</p>
-
-<p>
-  <strong>Entry:</strong>
-  <%= @stock.entry %>
-</p>
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>
