@@ -1,9 +1,9 @@
-<% if @results.to_sql != "SELECT `recruitments`.* FROM `recruitments`" %>
+<% if @results.to_sql != "SELECT `recruitments`.* FROM `recruitments` WHERE `recruitments`.`status` = 1" %>
   <div class = "col-10 card">
     <div class="card-body"><%= '検索結果は' + @results.size.to_s + '件でした。' %></div>
   </div>
 <% end %>
-<% @results.each do |result| %>
+<% @results_of_page.each do |result| %>
   <div class="col-sm-6 mb-3">
     <div class="card h-100">
       <%= image_tag(url_for(controller: :get_photo, :id => result), class: :'card-img-toop', alt: :'Card image cap') %>
@@ -48,4 +48,4 @@
     </div>
   </div>
 <% end %>
-<%= paginate @results %>
+<%= paginate @results_of_page %>

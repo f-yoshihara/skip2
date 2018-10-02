@@ -7,9 +7,10 @@ class TopController < ApplicationController
     @url = url_for(controller: :get_photo, :id => @recruitment)
     # ransack
     @q = Recruitment.where(status: :published).ransack(params[:q])
+    @results = @q.result
     # @recruitment = @q.result(distinct: true)
     # ransackのロジック
-    @results = @q.result.page(params[:page]).per(num_of_cards)
+    @results_of_page = @results.page(params[:page]).per(num_of_cards)
     # view表示のロジック
     # result_ary = @result.to_a
     # @result_public_ary = make_published_ary(result_ary).page(params[:page]).per(num_of_cards)
