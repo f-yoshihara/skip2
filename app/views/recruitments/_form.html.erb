@@ -26,6 +26,16 @@
     <%= form.collection_select( :occupation_id, occupations, :id, :category) %>
   </div>
 
+  <div class="field form-group form-group-lg">
+    <%= form.label :skill_list, "特技" %>
+    <%= text_field_tag 'recruitment[skill_list]', @recruitment.skill_list.join(',') %>
+  </div>
+
+  <div class="field form-group form-group-lg">
+    <%= form.label :interest_list, "関心" %>
+    <%= text_field_tag 'recruitment[interest_list]', @recruitment.interest_list.join(',') %>
+  </div>
+
   <div class="field">
     <%= form.label :郵便番号 %>
     <%= form.text_field :address_zipcode %>

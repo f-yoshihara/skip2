@@ -1,4 +1,6 @@
 class Recruitment < ApplicationRecord
+  acts_as_taggable
+  acts_as_taggable_on :skills, :interests
   # has_and_belongs_to_many :users
   has_many :stocks, dependent: :destroy
   has_many :entries, dependent: :destroy
