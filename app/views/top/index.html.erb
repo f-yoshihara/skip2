@@ -36,7 +36,8 @@
 
   <p>タグ一覧</p>
   <% @tags.each do |tag| %>
-    <span class="badge badge-primary"><%= tag %></span>
+    <%#= link_to tag, {:action => :tag, :tag => tag.name} %>
+    <%= link_to tag, {:action => :index, :tag => tag.name} %>
   <% end %>
 
   </div>

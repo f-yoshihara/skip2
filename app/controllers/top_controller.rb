@@ -9,17 +9,14 @@ class TopController < ApplicationController
     # ransack
     @q = Recruitment.where(status: :published).ransack(params[:q])
     @results = @q.result
-    # @recruitment = @q.result(distinct: true)
-    # ransackのロジック
-    @results_of_page = @results.page(params[:page]).per(num_of_cards)
-    # view表示のロジック
-    # result_ary = @result.to_a
-    # @result_public_ary = make_published_ary(result_ary).page(params[:page]).per(num_of_cards)
-    # @result_public_ary = @result.page(params[:page]).per(num_of_cards)
-  end
 
-  # def tag
-  #   @results = Recruitment.find
+    if params[:tag]
+      @tag_name = params[:tag]
+      @results = Recruitment.tagged_with(@tag_name)
+    end
+
+    @results_of_page = @results.page(params[:page]).per(num_of_cards)
+  end
 
   def about
   end
