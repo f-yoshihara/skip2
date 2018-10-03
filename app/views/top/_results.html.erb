@@ -1,4 +1,4 @@
-<% if @results.to_sql != "SELECT `recruitments`.* FROM `recruitments` WHERE `recruitments`.`status` = 1" %>
+<% unless @results.to_sql == "SELECT `recruitments`.* FROM `recruitments` WHERE `recruitments`.`status` = 1" %>
   <div class = "col-10 card">
     <div class="card-body"><%= '検索結果は' + @results.size.to_s + '件でした。' %></div>
   </div>
@@ -34,7 +34,7 @@
 
             <% if current_user.entries.where(recruitment_id: result).exists? %>
               <div class = "btn">
-                <%= link_to('応募済み', entries_destroy_path(result), class: :'btn btn-secondary float-right', disabled: :disabled) %>
+                <%= link_to('応募済み', entries_destroy_path(result), class: :'btn btn-secondary float-right disabled') %>
               </div>
 
             <% else %>
@@ -48,4 +48,3 @@
     </div>
   </div>
 <% end %>
-<%= paginate @results_of_page %>
