@@ -3,6 +3,7 @@ class TopController < ApplicationController
     num_of_cards = 4
     @recruitments = Recruitment.all
     @occupations = Occupation.all
+    @tags = ActsAsTaggableOn::Tag.all
     @published_ary = make_published_ary(@recruitments)
     @url = url_for(controller: :get_photo, :id => @recruitment)
     # ransack
@@ -16,6 +17,9 @@ class TopController < ApplicationController
     # @result_public_ary = make_published_ary(result_ary).page(params[:page]).per(num_of_cards)
     # @result_public_ary = @result.page(params[:page]).per(num_of_cards)
   end
+
+  # def tag
+  #   @results = Recruitment.find
 
   def about
   end

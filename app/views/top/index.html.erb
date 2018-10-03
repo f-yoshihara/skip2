@@ -31,9 +31,15 @@
 
     <%#= f.label :deadline %>
     <%#= f.search_field :deadline %>
-
     <%= f.submit %>
   <% end %>
+
+  <p>タグ一覧</p>
+  <% @tags.each do |tag| %>
+  <% link_to %>
+    <span class="badge badge-primary"><%= tag %></span>
+  <% end %>
+
   </div>
   <div class="row recruitment-cards col-10">
     <%= render 'results' %>
