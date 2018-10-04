@@ -10,6 +10,11 @@ class User < ApplicationRecord
   has_many :recruitments, through: :stocks
   # has_and_belongs_to_many :recruitments
 
+  def email_required?
+    !email.blank? && super
+    # (authentications.empty? || !email.blank?) && super
+  end
+
   def social_profiles(provider)
     social_profiles.select{ |sp| sp.provider == provider.to_s}.first
   end
