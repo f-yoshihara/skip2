@@ -25,6 +25,10 @@ class Recruitment < ApplicationRecord
   presence: true
   validates :street,
   presence: true
+  validates :capacity,
+  presence: true
+  validates :schedule,
+  presence: true
 
   # ここは自動的に通過する。dataというパラメータがあれば
   def data=(data)

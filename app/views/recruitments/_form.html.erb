@@ -99,6 +99,16 @@
   </div>
 
   <div class="field">
+    <%= form.label :定員数 %>
+    <%= form.text_field :capacity %>
+  </div>
+
+    <div class="field">
+    <%= form.label :日程 %>
+    <%= form.date_select :schedule %>
+  </div>
+
+  <div class="field">
     <%= form.label '下書き' %>
     <%= form.radio_button :status, :draft %>
     <%= form.label '公開' %>
