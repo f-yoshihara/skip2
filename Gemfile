@@ -66,6 +66,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'capistrano', '~> 3.11', require: false
+  gem 'capistrano-ext', '~> 1.2', '>= 1.2.1', require: false
 end
 
 group :test do
