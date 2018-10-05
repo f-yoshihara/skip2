@@ -21,14 +21,3 @@
   <%= @user.school_name %>
 </p>
 <%= link_to 'Edit', edit_user_path(@user) %>
-
-<h2>応募履歴一覧</h2>
-<% if @entries.empty? %>
-  <h2>まだ応募履歴がありません。</h2>
-<% else %>
-  <% @entries.each do |entry| %>
-  <p>
-    <%= link_to "#{entry.recruitment.title}", recruitment_path(entry.recruitment_id) %>
-  </p>
-  <% end %>
-<% end %>
