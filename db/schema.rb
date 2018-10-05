@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_20_080715) do
+ActiveRecord::Schema.define(version: 2018_10_05_125257) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 2018_09_20_080715) do
     t.string "prefecture"
     t.string "city"
     t.string "street"
+    t.date "schedule"
     t.index ["company_id"], name: "index_recruitments_on_company_id"
     t.index ["occupation_id"], name: "index_recruitments_on_occupation_id"
   end
