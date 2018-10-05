@@ -1,29 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Entries</h1>
+<h1>応募一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Recruitment</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry.user %></td>
-        <td><%= entry.recruitment %></td>
-        <td><%= link_to 'Show', entry %></td>
-        <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @entries.each do |entry| %>
+  <p>
+    <%= link_to "#{entry.recruitment.title}", recruitment_path(entry.recruitment_id) %>
+    <%= show_status(entry) %>
+    <%= entry.recruitment.deadline %>
+  </p>
+<% end %>
 
-<br>
-
-<%= link_to 'New Entry', new_entry_path %>
