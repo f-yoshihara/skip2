@@ -1,10 +1,11 @@
 class TopController < ApplicationController
   def index
     num_of_cards = 4
-    @recruitments = Recruitment.all
     @occupations = Occupation.all
     @tags = ActsAsTaggableOn::Tag.all
-    @published_ary = make_published_ary(@recruitments)
+    @recruitment_prefecture = Recruitment.select(:prefecture).distinct
+    recruitments = Recruitment.all
+    @published_ary = make_published_ary(recruitments)
     @url = url_for(controller: :get_photo, :id => @recruitment)
     # ransack
     @q = Recruitment.where(status: :published).ransack(params[:q])

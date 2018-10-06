@@ -104,6 +104,6 @@ class RecruitmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def recruitment_params
       # StrongParametersに指定する場合バイナリはdata
-      params.require(:recruitment).permit(:company_id, :occupation_id, :status, :title, :body, :deadline, :data, :capacity, :location, :question1, :question2, :question3, :question4, :question5, :prefecture, :city, :street, :tag_list, :skill_list, :interest_list)
+      params.require(:recruitment).permit(:company_id, :occupation_id, :status, :title, :body, :deadline, :data, :capacity, :location, :question1, :question2, :question3, :question4, :question5, :prefecture, :city, :street, :tag_list, :skill_list, :interest_list, :schedule)
     end
 end

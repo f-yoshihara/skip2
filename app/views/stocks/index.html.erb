@@ -5,5 +5,6 @@
 <% @stocks.each do |stock| %>
   <p>
     <%= link_to "#{stock.recruitment.title}", recruitment_path(stock.recruitment_id) %>
+    締め切り:<%= stock.recruitment.deadline %>
   </p>
 <% end %>
