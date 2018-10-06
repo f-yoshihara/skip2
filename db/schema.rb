@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_125257) do
+ActiveRecord::Schema.define(version: 2018_10_06_054121) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2018_10_05_125257) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "industry_id"
+    t.index ["industry_id"], name: "index_companies_on_industry_id"
   end
 
   create_table "companies_industries", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -232,6 +234,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_125257) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "companies", "industries"
   add_foreign_key "entries", "recruitments"
   add_foreign_key "entries", "users"
   add_foreign_key "entry_sheets", "companies"
