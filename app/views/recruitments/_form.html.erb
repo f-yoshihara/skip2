@@ -27,6 +27,11 @@
   </div>
 
   <div class="field form-group form-group-lg">
+    <%= form.label :industry_list, "業種" %>
+    <%= text_field_tag 'recruitment[industry_list]', @recruitment.industry_list.join(',') %>
+  </div>
+
+  <div class="field form-group form-group-lg">
     <%= form.label :skill_list, "特技" %>
     <%= text_field_tag 'recruitment[skill_list]', @recruitment.skill_list.join(',') %>
   </div>

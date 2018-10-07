@@ -18,10 +18,15 @@ class TopController < ApplicationController
       @results = Recruitment.tagged_with(@tag_name)
     end
 
-    if params[:industry_tag]
-      tag_name = params[:industry_tag]
-      @results = Company.tagged_with(tag_name).recruitments
-    end
+    # if params[:industry_tag]
+    #   tag_name = params[:industry_tag]
+    #   companies = Company.tagged_with(tag_name)
+    #   @results = []
+    #   companies.each do |company|
+    #     @results << company.recruitments
+    #   end
+    #   @results
+    # end
 
     @results_of_page = @results.page(params[:page]).per(num_of_cards)
   end
