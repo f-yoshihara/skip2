@@ -78,7 +78,6 @@ class RecruitmentsController < ApplicationController
       @recruitment = Recruitment.find(params[:id])
       @occupations = Occupation.all
       # send_data @recruitment.photo, type: @recruitment.ctype, disposition: :inline
-      # binding.pry
     end
 
     # ログイン認証

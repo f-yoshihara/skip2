@@ -3,7 +3,7 @@ class TopController < ApplicationController
     num_of_cards = 4
     @occupations = Occupation.all
     @tags = ActsAsTaggableOn::Tag.all
-    @tags_industry = Company.tags_on(:industries)
+    @tags_industry = Recruitment.tags_on(:industries)
     @tags_interst = Company.tags_on(:intesrsts)
     @recruitment_prefecture = Recruitment.select(:prefecture).distinct
     recruitments = Recruitment.all
@@ -18,15 +18,10 @@ class TopController < ApplicationController
       @results = Recruitment.tagged_with(@tag_name)
     end
 
-    # if params[:industry_tag]
-    #   tag_name = params[:industry_tag]
-    #   companies = Company.tagged_with(tag_name)
-    #   @results = []
-    #   companies.each do |company|
-    #     @results << company.recruitments
-    #   end
-    #   @results
-    # end
+    if params[:industry_tag]
+      @tag_name = params[:industry_tag]
+      @results = Recruitment.tagged_with(@tag_name)
+    end
 
     @results_of_page = @results.page(params[:page]).per(num_of_cards)
   end
