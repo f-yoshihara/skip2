@@ -37,9 +37,15 @@
     <% end %>
 
     <p>タグ一覧</p>
-    <% @tags.each do |tag| %>
+    <% @tags_industry.each do |tag| %>
       <span class="badge badge-primary">
-        <%= link_to tag, {:action => :index, :tag => tag.name} %>
+        <%= link_to tag, {:action => :index, :industry_tag => tag.name} %>
+      </span>
+    <% end %>
+
+    <% @tags_interst.each do |tag| %>
+      <span class="badge badge-info">
+        <%= link_to tag, {:action => :index, :interest_tag => tag.name} %>
       </span>
     <% end %>
   </div>
