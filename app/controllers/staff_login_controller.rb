@@ -3,10 +3,10 @@ class StaffLoginController < ApplicationController
 
  def auth
    staff = Staff.find_by(email: params[:email])
-   if staff && staff.authenticate(params[:password]) then
+   if staff && staff.authenticate(params[:password])
      reset_session
      session[:staff] = staff.id
-    redirect_to recruitment_list_index_path
+     redirect_to recruitment_list_index_path
    else
      flash.now[:referer] = params[:referer]
      @error = 'ユーザ名／パスワードが間違っています。'
