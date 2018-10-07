@@ -224,7 +224,6 @@ ActiveRecord::Schema.define(version: 2018_10_05_125257) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "password"
     t.date "birth"
     t.integer "school_year"
     t.string "school_name"

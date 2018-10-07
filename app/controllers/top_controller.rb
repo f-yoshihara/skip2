@@ -3,6 +3,8 @@ class TopController < ApplicationController
     num_of_cards = 4
     @occupations = Occupation.all
     @tags = ActsAsTaggableOn::Tag.all
+    @tags_industry = Company.tags_on(:industries)
+    @tags_interst = Company.tags_on(:intesrsts)
     @recruitment_prefecture = Recruitment.select(:prefecture).distinct
     recruitments = Recruitment.all
     @published_ary = make_published_ary(recruitments)
@@ -14,6 +16,11 @@ class TopController < ApplicationController
     if params[:tag]
       @tag_name = params[:tag]
       @results = Recruitment.tagged_with(@tag_name)
+    end
+
+    if params[:industry_tag]
+      tag_name = params[:industry_tag]
+      @results = Company.tagged_with(tag_name).recruitments
     end
 
     @results_of_page = @results.page(params[:page]).per(num_of_cards)
@@ -32,5 +39,10 @@ class TopController < ApplicationController
         end
       end
       new_ary
+    end
+
+    def search_recruitments_by_tag(tag)
+      tag_name = params[tag]
+      Recruitment.tagged_with(tag_name)
     end
 end
