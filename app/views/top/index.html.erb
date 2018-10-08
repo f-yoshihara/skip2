@@ -27,7 +27,7 @@
       <%= f.collection_select( :occupation_id_eq, @occupations, :id, :category) %>
 
       <%= f.label :フリーワード検索 %>
-      <%= f.search_field :title_or_overview_cont %>
+      <%= f.search_field :title_or_body_cont %>
 
       <%= f.label :都道府県 %>
       <%= f.collection_select( :prefecture_eq, @recruitment_prefecture, :prefecture, :prefecture) %>
