@@ -1,26 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>
-  <%= @recruitment.company.name %>
-</h1>
-
-<p>
-  <strong>職種:</strong>
-  <%= @recruitment.occupation.category %>
-</p>
-
-<p>
-  <%= image_tag(@url, :size => '100x100') %>
-</p>
-
-<h1>
   <%= @recruitment.title %>
 </h1>
 
 <p>
-  <% @recruitment.skill_list.each do |tag| %>
-    <span class="badge badge-primary"><%= tag %></span>
-  <% end %>
+  <%= image_tag(@url, :size => '100x100') %>
 </p>
 
 <p>
@@ -30,40 +15,105 @@
 </p>
 
 <p>
+  <% @recruitment.industry_list.each do |tag| %>
+    <span class="badge badge-primary"><%= tag %></span>
+  <% end %>
+</p>
+
+<h1>
+  何をやるの？
+</h1>
+
+<div>
   <%= @recruitment.body %>
+</div>
+
+<h1>
+  どんな会社？
+</h1>
+
+<div>
+  <%= @recruitment.culture %>
+</div>
+
+<h1>
+  職場体験詳細
+</h1>
+
+<p>
+  <%= @recruitment.company.name %>
+</p>
+
+<p>
+  <strong>場所:</strong>
+  <%= @recruitment.prefecture %>
+  <%= @recruitment.city %>
+  <%= @recruitment.street %>
+</p>
+
+<h1>
+  地図
+</h1>
+
+<p>
+  <strong>日程:</strong>
+  <%= @recruitment.schedule.year %>
+  年
+  <%= @recruitment.schedule.mon %>
+  月
+  <%= @recruitment.schedule.day %>
+  日
+</p>
+
+<p>
+  <strong>時間:</strong>
+  <%= @recruitment.start_time.hour %>
+  :
+  <%= @recruitment.start_time.min %>
+  ~
+  <%= @recruitment.end_time.hour %>
+  :
+  <%= @recruitment.end_time.min %>
 </p>
 
 <p>
   <strong>応募締め切り:</strong>
-  <%= @recruitment.deadline %>
-</p>
-  
-<%
-=begin
-%>
-<% if @recruitment.question1 %>
-  <p>
-    <strong>質問①:</strong>
-    <%= @recruitment.question1 %>
-  </p>
-<% end %>
-
-<% if @recruitment.question1 %>
-  <p>
-    <strong>質問②:</strong>
-    <%= @recruitment.question2 %>
-  </p>
-<% end %>
-
-<p>
-  <strong>Status:</strong>
-  <%= @recruitment.status %>
+  <%= @recruitment.deadline.year %>
+  年
+  <%= @recruitment.deadline.mon %>
+  月
+  <%= @recruitment.deadline.day %>
+  日
 </p>
 
-<%= link_to 'Edit', edit_recruitment_path(@recruitment) %> |
-<%= link_to 'Back', recruitments_path %>
+<% if current_user %>
+  <% if current_user.entries.where(recruitment_id: result).exists? %>
+    <div class = "btn">
+      <%= link_to('応募済み', entries_destroy_path(result), class: :'btn btn-secondary float-right disabled') %>
+    </div>
 
-<%
-=end
-%>  
+  <% else %>
+    <div class = "btn">
+      <%= link_to('応募する', new_entry_path(result), class: :'btn btn-info float-right') %>
+    </div>
+  <% end %>
 
+  <% if current_user.stocks.where(recruitment_id: result).exists? %>
+    <div class = "btn">
+      <%= link_to('ストック済み', stocks_destroy_path(result), class: :'btn btn-success float-right', id: "#{result.id}", remote: true) %>
+    </div>
+
+  <% else %>
+    <div class = "btn">
+      <%= link_to('ストックする', stocks_create_path(result), class: :'btn btn-success float-right', id: "#{result.id}", remote: true) %>
+    </div>
+  <% end %>
+<% else %>
+  <div class = "btn">
+    <%= link_to('応募する', login_index_path, class: :'btn btn-info float-right') %>
+  </div>
+
+  <div class = "btn">
+    <%= link_to('ストックする', login_index_path, class: :'btn btn-success float-right') %>
+  </div>
+<% end %>
