@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_125257) do
+ActiveRecord::Schema.define(version: 2018_10_07_143051) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_125257) do
     t.bigint "occupation_id"
     t.integer "status", default: 0, null: false
     t.string "title"
-    t.text "body"
+    t.text "overview"
     t.date "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -131,6 +131,11 @@ ActiveRecord::Schema.define(version: 2018_10_05_125257) do
     t.string "city"
     t.string "street"
     t.date "schedule"
+    t.text "culture"
+    t.string "time"
+    t.string "belongings"
+    t.string "clothing"
+    t.text "notices"
     t.index ["company_id"], name: "index_recruitments_on_company_id"
     t.index ["occupation_id"], name: "index_recruitments_on_occupation_id"
   end
@@ -224,6 +229,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_125257) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "password"
     t.date "birth"
     t.integer "school_year"
     t.string "school_name"
