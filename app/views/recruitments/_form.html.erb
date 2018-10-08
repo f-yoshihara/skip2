@@ -32,12 +32,7 @@
   </div>
 
   <div class="field form-group form-group-lg">
-    <%= form.label :skill_list, "特技" %>
-    <%= text_field_tag 'recruitment[skill_list]', @recruitment.skill_list.join(',') %>
-  </div>
-
-  <div class="field form-group form-group-lg">
-    <%= form.label :interest_list, "関心" %>
+    <%= form.label :interest_list, "どんな人にオススメか？" %>
     <%= text_field_tag 'recruitment[interest_list]', @recruitment.interest_list.join(',') %>
   </div>
 
@@ -67,8 +62,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :本文 %>
+    <%= form.label :「何をやるの？」 %>
     <%= form.text_area :body %>
+  </div>
+
+  <div class="field">
+    <%= form.label :「どんな会社？」 %>
+    <%= form.text_area :culture %>
   </div>
 
   <div class="field">
@@ -108,9 +108,34 @@
     <%= form.text_field :capacity %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= form.label :日程 %>
     <%= form.date_select :schedule %>
+  </div>
+
+  <div class="field">
+    <%= form.label :開始時間 %>
+    <%= form.time_select :start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :終了時間 %>
+    <%= form.time_select :end_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :持ち物 %>
+    <%= form.text_field :belongings %>
+  </div>
+
+  <div class="field">
+    <%= form.label :服装 %>
+    <%= form.text_field :clothing %>
+  </div>
+
+  <div class="field">
+    <%= form.label :その他注意事項など %>
+    <%= form.text_area :notices %>
   </div>
 
   <div class="field">

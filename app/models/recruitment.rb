@@ -29,6 +29,12 @@ class Recruitment < ApplicationRecord
   presence: true
   validates :schedule,
   presence: true
+  validates :start_time,
+  presence: true
+  validates :end_time,
+  presence: true
+  validates :culture,
+  presence: true
 
   # ここは自動的に通過する。dataというパラメータがあれば
   def data=(data)
