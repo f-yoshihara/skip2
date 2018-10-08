@@ -23,5 +23,8 @@ module Skip2
       helper_specs: false,
       routing_specs: false
     end
+
+    config.time_zone = 'Tokyo'
+    config.active_record.time_zone_aware_types = [:datetime, :time]
   end
 end
