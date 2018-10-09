@@ -1,6 +1,4 @@
 class Recruitment < ApplicationRecord
-  geocoded_by :address
-  after_validation :geocode
   acts_as_taggable
   acts_as_taggable_on :skills, :interests, :industries
   has_many :stocks, dependent: :destroy
@@ -44,10 +42,6 @@ class Recruitment < ApplicationRecord
   end
 
   private
-    def address
-      [prefecture, city, street].compact.join('')
-    end
-
     def file_invalid?
       if self.photo
         ps = ['image/jpeg', 'image/gif', 'image/png']
