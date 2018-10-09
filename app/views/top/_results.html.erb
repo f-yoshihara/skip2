@@ -9,9 +9,30 @@
       <%= image_tag(url_for(controller: :get_photo, :id => result), class: :'card-img-toop', alt: :'Card image cap') %>
       <div class="card-body" style="height: 240px;">
         <h5 class="card-title"><%= result.title %></h5>
+
         <p><%= result.company.name %></p>
-        <p><%= result.occupation.category %></p>
-        <p><%= result.deadline %></p>
+        
+        <% result.industry_list.each do |tag| %>
+          <span class="badge badge-info">
+            <%= tag %>
+          </span>
+        <% end %>
+
+        <% result.interest_list.each do |tag| %>
+          <span class="badge badge-primary">
+            <%= tag %>
+          </span>
+        <% end %>
+
+        <p>
+          体験日:
+          <%= result.schedule %>
+        </p>
+
+        <p>
+          締め切り:
+          <%= result.deadline %>
+        </p>
         <div class = "d-flex">
           <div id = "recruitment_status">
             <p>現在の応募者数 <%= result.entries.size %>人/定員<%= result.capacity %>人</p>

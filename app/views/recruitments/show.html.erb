@@ -87,27 +87,29 @@
 </p>
 
 <% if current_user %>
-  <% if current_user.entries.where(recruitment_id: result).exists? %>
+  <%# binding.pry %>
+  <% if current_user.entries.where(recruitment_id: @recruitment.id).exists? %>
     <div class = "btn">
-      <%= link_to('応募済み', entries_destroy_path(result), class: :'btn btn-secondary float-right disabled') %>
+      <%= link_to('応募済み', entries_destroy_path(@recruitment.id), class: :'btn btn-secondary float-right disabled') %>
     </div>
 
   <% else %>
     <div class = "btn">
-      <%= link_to('応募する', new_entry_path(result), class: :'btn btn-info float-right') %>
+      <%= link_to('応募する', new_entry_path(@recruitment.id), class: :'btn btn-info float-right') %>
     </div>
   <% end %>
 
-  <% if current_user.stocks.where(recruitment_id: result).exists? %>
+  <% if current_user.stocks.where(recruitment_id: @recruitment.id).exists? %>
     <div class = "btn">
-      <%= link_to('ストック済み', stocks_destroy_path(result), class: :'btn btn-success float-right', id: "#{result.id}", remote: true) %>
+      <%= link_to('ストック済み', stocks_destroy_path(@recruitment.id), class: :'btn btn-success float-right', id: "#{@recruitment.id}", remote: true) %>
     </div>
 
   <% else %>
     <div class = "btn">
-      <%= link_to('ストックする', stocks_create_path(result), class: :'btn btn-success float-right', id: "#{result.id}", remote: true) %>
+      <%= link_to('ストックする', stocks_create_path(@recruitment.id), class: :'btn btn-success float-right', id: "#{@recruitment.id}", remote: true) %>
     </div>
   <% end %>
+  
 <% else %>
   <div class = "btn">
     <%= link_to('応募する', login_index_path, class: :'btn btn-info float-right') %>
