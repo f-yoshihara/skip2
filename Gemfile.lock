@@ -169,6 +169,7 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     has_scope (0.7.2)
@@ -409,6 +410,7 @@ DEPENDENCIES
   devise
   faker
   faraday
+  geocoder (~> 1.5)
   jbuilder (~> 2.5)
   jquery-rails
   json
@@ -443,4 +445,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.5
+   1.17.0.pre.1
