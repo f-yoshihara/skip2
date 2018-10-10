@@ -120,14 +120,17 @@
 <% end %>
 
 <script>
-  // var map;
-  // function initMap() {
-  //   map = new google.maps.Map(document.getElementById('map'), {
-  //     center: {lat: <%#= @recruitment.latitude %>, lng: <%#= @recruitment.longitude %>},
-  //     zoom: 16
-  //   });
-  // }
+function initMap(latlng) {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: latlng,
+    zoom: 16
+  });
 
+  var marker = new google.maps.Marker({
+    position: latlng,
+    map: map
+  });
+}
 
 function getLatLng() {
   var geocoder = new google.maps.Geocoder();
@@ -138,24 +141,13 @@ function getLatLng() {
     if (status == google.maps.GeocoderStatus.OK) {
       for (var i in results) {
         if (results[i].geometry) {
-
           var latlng = results[i].geometry.location;
-        
-          var map;
-          function initMap(latlng) {
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: latlng,
-              position: latlng,
-              zoom: 16
-            });
-          }
           initMap(latlng)
         }
       }
     }
   });
 }
-
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQAUZYIeNh0s2pU9gx5LYUwXBCt3I08OI&callback=getLatLng"
 async defer></script>
