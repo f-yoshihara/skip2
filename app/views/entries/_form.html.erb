@@ -11,8 +11,24 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :user_id, :value => current_user.id %>
+  <%= form.fields_for @user do |user_form| %>
+  <div class="field">
+    <%= user_form.label :name, '名前' %>
+    <%= user_form.text_field :name %>
+  </div>
 
+  <div class="field">
+    <%= user_form.label :school_year, '学年' %>
+    <%= user_form.text_field :school_year %>
+  </div>
+
+  <div class="field">
+    <%= user_form.label :school_name, '学校名' %>
+    <%= user_form.text_field :school_name %>
+  </div>
+  <% end %>
+
+  <%= form.hidden_field :user_id, :value => current_user.id %>
   <%= form.hidden_field :recruitment_id, :value => recruitment.id %>
 
   <% unless recruitment.question1.blank? %>

@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :stocks, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :recruitments, through: :stocks
-  # has_and_belongs_to_many :recruitments
 
   def email_required?
     !email.blank? && super
