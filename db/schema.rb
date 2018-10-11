@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2018_10_08_123802) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "industry_id"
+    t.index ["industry_id"], name: "index_companies_on_industry_id"
   end
 
   create_table "companies_industries", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -133,10 +135,10 @@ ActiveRecord::Schema.define(version: 2018_10_08_123802) do
     t.date "schedule"
     t.text "culture"
     t.time "start_time"
-    t.time "end_time"
     t.string "belongings"
     t.string "clothing"
     t.text "notices"
+    t.time "end_time"
     t.index ["company_id"], name: "index_recruitments_on_company_id"
     t.index ["occupation_id"], name: "index_recruitments_on_occupation_id"
   end
@@ -230,7 +232,6 @@ ActiveRecord::Schema.define(version: 2018_10_08_123802) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "password"
     t.date "birth"
     t.integer "school_year"
     t.string "school_name"
@@ -238,6 +239,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_123802) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "companies", "industries"
   add_foreign_key "entries", "recruitments"
   add_foreign_key "entries", "users"
   add_foreign_key "entry_sheets", "companies"
