@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   get 'get_photo/index'
   root 'top#index'
   resources :interests
-  resources :entry_sheets
   resources :students
   resources :recruitments
   resources :staffs
