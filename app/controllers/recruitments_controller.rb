@@ -64,7 +64,7 @@ class RecruitmentsController < ApplicationController
     def set_recruitment
       @recruitment = Recruitment.find(params[:id])
       @occupations = Occupation.all
-      # send_data @recruitment.photo, type: @recruitment.ctype, disposition: :inline
+      
     end
 
     def check_logined
@@ -81,7 +81,6 @@ class RecruitmentsController < ApplicationController
       end
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def recruitment_params
       # StrongParametersに指定する場合バイナリはdata
       params.require(:recruitment).permit(:company_id, :occupation_id, :status, :title, :body, :culture, :deadline, :data, :capacity, :location, :question1, :question2, :question3, :question4, :question5, :prefecture, :city, :street, :tag_list, :industry_list, :skill_list, :interest_list, :schedule, :start_time, :end_time, :belongings, :clothing, :notices )

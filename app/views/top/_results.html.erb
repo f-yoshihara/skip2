@@ -3,10 +3,12 @@
     <div class="card-body"><%= "検索結果は#{@results.size.to_s}件でした。" %></div>
   </div>
 <% end %>
+
 <% @results_of_page.each do |result| %>
   <div class="col-sm-6 mb-3">
     <div class="card h-100">
       <%= image_tag(url_for(controller: :get_photo, :id => result), class: :'card-img-toop', alt: :'Card image cap') %>
+
       <div class="card-body" style="height: 240px;">
         <h5 class="card-title"><%= result.title %></h5>
 
@@ -33,14 +35,17 @@
           締め切り:
           <%= result.deadline %>
         </p>
+
         <div class = "d-flex">
           <div id = "recruitment_status">
             <p>現在の応募者数 <%= result.entries.size %>人/定員<%= result.capacity %>人</p>
             <p>現在のストック数 <%= result.stocks.size %></p>
           </div>
+
           <div class = "btn">
           <%= link_to '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right' %>
           </div>
+
           <% if current_user %>
             <% if current_user.stocks.where(recruitment_id: result).exists? %>
               <div class = "btn">
@@ -57,7 +62,6 @@
               <div class = "btn">
                 <%= link_to('応募済み', entries_destroy_path(result), class: :'btn btn-secondary float-right disabled') %>
               </div>
-
             <% else %>
               <div class = "btn">
                 <%= link_to('応募する', new_entry_path(result), class: :'btn btn-info float-right') %>
