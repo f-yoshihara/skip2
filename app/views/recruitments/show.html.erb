@@ -85,6 +85,21 @@
   日
 </p>
 
+<p>
+  <strong>持ち物:</strong>
+  <%= @recruitment.belongings %>
+</p>
+
+<p>
+  <strong>服装:</strong>
+  <%= @recruitment.clothing %>
+</p>
+
+<p>
+  <strong>その他注意事項:</strong>
+  <%= @recruitment.notices %>
+</p>
+
 <% if current_user %>
   <%# binding.pry %>
   <% if current_user.entries.where(recruitment_id: @recruitment.id).exists? %>

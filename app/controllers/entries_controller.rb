@@ -12,7 +12,7 @@ class EntriesController < InheritedResources::Base
 
     respond_to do |format|
       if @entry.save && @user.update(user_params)
-        format.html { redirect_to @entry, notice: '応募が完了しました。' }
+        format.html { redirect_to @recruitment, notice: '応募が完了しました。' }
         format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new }
