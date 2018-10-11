@@ -29,7 +29,7 @@ class EntriesController < InheritedResources::Base
   private
 
     def entry_params
-      params.require(:entry).permit(:user_id, :recruitment_id, :status, :answer1, :answer2, :answer3, :answer4, :answer5)
+      params.require(:entry).permit(:user_id, :recruitment_id, :status, :answer1, :answer2, :answer3, :answer4, :answer5, :agreement)
     end
 
     def user_params

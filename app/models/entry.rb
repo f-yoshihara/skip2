@@ -8,5 +8,6 @@ class Entry < ApplicationRecord
   validates :answer3, presence: true
   validates :answer4, presence: true
   validates :answer5, presence: true
+  validates :agreement, acceptance: {accept: 'yes'}
   enum status: { draft:0, published:1}
 end

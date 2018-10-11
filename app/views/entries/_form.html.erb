@@ -83,7 +83,12 @@
     <%= form.radio_button :status, :published %>
   </div>
 
+  <div class="field">
+    <%= form.check_box :agreement, {}, 'yes' %>
+    <%= form.label 'プライバシーポリシーに同意する' %>
+  </div>
+
   <div class="actions">
-    <%= form.submit('送信する') %>
+    <%= form.submit('申請する') %>
   </div>
 <% end %>
