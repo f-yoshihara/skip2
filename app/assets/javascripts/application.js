@@ -20,4 +20,3 @@
 //= require bootstrap-sprockets
 
 //= require jquery.jpostal 
-//= require fb-sw-initialize
