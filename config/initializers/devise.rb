@@ -288,6 +288,6 @@ Devise.setup do |config|
   #   include Turbolinks::Controller
   # end
   OAUTH_CONFIG = YAML.load_file("#{Rails.root}/config/settings.yml")[Rails.env].symbolize_keys!
-  # config.omniauth :line, ENV['LINE_KEY'], ENV['LINE_SECRET']
-  config.omniauth :line, OAUTH_CONFIG[:line]['key'], OAUTH_CONFIG[:line]['secret']
+  config.omniauth :line, ENV['LINE_KEY'], ENV['LINE_SECRET']
+  # config.omniauth :line, OAUTH_CONFIG[:line]['key'], OAUTH_CONFIG[:line]['secret']
 end
