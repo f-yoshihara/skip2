@@ -3,8 +3,8 @@
 <% end %>
 <% @results_of_page.each do |result| %>
 
-    <div class="card mb-5">
-      <%=link_to image_tag(url_for(controller: :get_photo, :id => result), class: :'card-img-top', alt: :'Card image cap', style: :'max-height:13rem;'), recruitment_path(result)%>
+    <div class="card mb-5" style="width:600px;margin:auto;">
+      <%=link_to image_tag(url_for(controller: :get_photo, :id => result), class: :'card-img-top', alt: :'Card image cap', style: :'height:300px'), recruitment_path(result)%>
       <div class="card-body">
           <p class="card-title h3"><%= link_to result.title, recruitment_path(result) %></p>
           <p><%= result.company.name %></p>
