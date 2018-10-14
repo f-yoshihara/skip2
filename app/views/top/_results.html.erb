@@ -1,50 +1,44 @@
 <% unless @results.to_sql == "SELECT `recruitments`.* FROM `recruitments` WHERE `recruitments`.`status` = 1" %>
-  <div class = "col-10 card">
     <div class="card-body"><%= "検索結果は#{@results.size.to_s}件でした。" %></div>
-  </div>
 <% end %>
-
 <% @results_of_page.each do |result| %>
-  <div class="col-sm-6 mb-3">
-    <div class="card h-100">
-      <%= image_tag(url_for(controller: :get_photo, :id => result), class: :'card-img-toop', alt: :'Card image cap') %>
 
-      <div class="card-body" style="height: 240px;">
-        <h5 class="card-title"><%= result.title %></h5>
+    <div class="card mb-5">
+      <%=link_to image_tag(url_for(controller: :get_photo, :id => result), class: :'card-img-top', alt: :'Card image cap', style: :'max-height:13rem;'), recruitment_path(result)%>
+      <div class="card-body">
+          <p class="card-title h3"><%= link_to result.title, recruitment_path(result) %></p>
+          <p><%= result.company.name %></p>
+          <% result.industry_list.each do |tag| %>
+            <span class="badge badge-info">
+              <%= tag %>
+            </span>
+          <% end %>
 
-        <p><%= result.company.name %></p>
-        
-        <% result.industry_list.each do |tag| %>
-          <span class="badge badge-info">
-            <%= tag %>
-          </span>
-        <% end %>
+          <% result.interest_list.each do |tag| %>
+            <span class="badge badge-primary">
+              <%= tag %>
+            </span>
+          <% end %>
 
-        <% result.interest_list.each do |tag| %>
-          <span class="badge badge-primary">
-            <%= tag %>
-          </span>
-        <% end %>
+          <p>
+            体験日:
+            <%= result.schedule %>
+          </p>
 
-        <p>
-          体験日:
-          <%= result.schedule %>
-        </p>
+          <p>
+            締め切り:
+            <%= result.deadline %>
+          </p>
 
-        <p>
-          締め切り:
-          <%= result.deadline %>
-        </p>
+      <div class = "d-flex">
+        <div id = "recruitment_status">
+          <p>現在の応募者数 <%= result.entries.size %>人/定員<%= result.capacity %>人</p>
+          <p>現在のストック数 <%= result.stocks.size %></p>
+        </div>
 
-        <div class = "d-flex">
-          <div id = "recruitment_status">
-            <p>現在の応募者数 <%= result.entries.size %>人/定員<%= result.capacity %>人</p>
-            <p>現在のストック数 <%= result.stocks.size %></p>
-          </div>
-
-          <div class = "btn">
-          <%= link_to '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right' %>
-          </div>
+        <div class = "btn">
+        <%= link_to '詳細表示', recruitment_path(result), class: :'btn btn-primary float-right' %>
+        </div>
 
           <% if current_user %>
             <% if current_user.stocks.where(recruitment_id: result).exists? %>
@@ -71,5 +65,4 @@
         </div>
       </div>
     </div>
-  </div>
 <% end %>
