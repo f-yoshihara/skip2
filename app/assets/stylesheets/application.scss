@@ -17,4 +17,21 @@
  
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
-body { padding-top: 70px; }
+body{
+    color: #333;
+    text-decoration:none;
+}
+.navbar{
+    background-color:rgb(102, 186, 255); 
+    height: 70px;
+    color:white;
+    font-size: 18px;
+    // border-bottom: solid 4px rgb(0, 0, 0);
+}
+.navbar-brand{
+    font-size:34px;
+}
+.container{
+    max-width:800px;
+    padding-top: 200px;
+}
