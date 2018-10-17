@@ -45,15 +45,30 @@ body{
     }
 }
 
+.nav-link{
+    color:white;
+}
 .navbar{
     background-color:rgb(102, 186, 255); 
     height: 70px;
     font-size: 18px;
-    // border-bottom: solid 4px rgb(0, 0, 0);
 }
 .navbar-brand{
     font-size:34px;
+    color:white;
 }
+.nav-link-left{
+    margin-left: 100px;
+}
+
+
 i{
+    color:white;
+}
+.sidebar{
+    font-size:14px;
+}
+.sidebar-tag{
+    font-size:10px;
     color:white;
 }
