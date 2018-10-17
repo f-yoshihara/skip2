@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-md fixed-top">
       <%= link_to root_path do%>
         <i class="navbar-brand">Trigger</i>
       <% end %>
@@ -22,15 +22,6 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <%= link_to login_logout_path do%>
-            <i class='nav-link'>ログアウト</i>
-            <% end %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to '採用担当者新規登録', staff_signup_index_path, class: :'nav-link'%>
-          </li>
 
           <% if session[:staff] %>
             <li class="nav-item">
@@ -43,17 +34,27 @@
             </li>
           <% end %>
         
-          <% if current_user %>
-            <li class="nav-item">
-              <%= link_to 'マイページ', user_path(current_user), class: :'nav-link' %>
-            </li>
+          <li class="nav-item">
+            <%= link_to login_logout_path do%>
+            <i class='nav-link'>ログアウト</i>
+            <% end %>
+          </li>
 
+          <%# <li class="nav-item"> %>
+            <%#= link_to '採用担当者新規登録', staff_signup_index_path, class: :'nav-link'%>
+          <%# </li> %>
+        
+          <% if current_user %>
             <li class="nav-item">
               <%= link_to 'お気に入り', stocks_path(id: current_user), class: :'nav-link' %>
             </li>
 
             <li class="nav-item">
               <%= link_to '応募一覧', entries_path(id: current_user), class: :'nav-link' %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'マイページ', user_path(current_user), class: :'nav-link' %>
             </li>
 
           <% else %>
@@ -63,9 +64,9 @@
           <% end %>
         </ul>
 
-        <% if current_user %>
-          <p>ようこそ<%= current_user.name %>さん</p>
-        <% end %>
+        <%# if current_user %>
+          <%# <p>ようこそ= current_user.nameさん</p> %>
+        <%# end %>
         <%# <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
