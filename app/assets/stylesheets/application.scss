@@ -21,7 +21,7 @@ body{
     color: #333;
 }
 .container{
-    padding-top: 200px;
+    padding-top: 130px;
     width: 992px;
 }
 // @media(min-width: 1024px){
@@ -31,16 +31,20 @@ body{
 // }
 // }
 
-
+// @media (min-width: 768px){
+//     .card {
+//         width:500px;
+//     }
+// }
+.col-md-8{
+    padding: 0px;
+}
 @media (max-width: 767px){
-.container {
-    max-width: 100%;
-    padding-top:200px;
-    padding-right: 0px;
-    padding-left: 0px;
+    .container {
+        max-width: 100%;
+    }
+}
 
-}
-}
 .navbar{
     background-color:rgb(102, 186, 255); 
     height: 70px;
