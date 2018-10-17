@@ -24,40 +24,46 @@
 </div> %>
 <%# 948 %>
 <div class="container">  
-  <div class="row justify-content-center">
+  <div class="row">
     <div class="col-md-4">
     <%= search_form_for(@q, :url => { :controller => :top, :action => :index }) do |f| %>
+      <p class="sidebar">
+      <%= f.label :エリア %>
+      </p>
       <p>
-      <%= f.label :職種 %>
-      <%= f.collection_select( :occupation_id_eq, @occupations, :id, :category) %>
+      <%= f.collection_select( :prefecture_eq, @recruitment_prefecture, :prefecture, :prefecture, {prompt: "選択して下さい"}, {class: :'form-control'})%>
+      </p>
+
+      <p class="sidebar">
+      <%= f.label :業種 %>
+      </p>
+      <p>
+      <%= f.collection_select( :occupation_id_eq, @occupations, :id, :category, {prompt: "選択して下さい"}, {class: :'form-control'}) %>
       </p>
 
       <p>
-      <%= f.label :フリーワード検索 %>
-      <%= f.search_field :title_or_body_cont %>
+      <%#%= f.label :フリーワード検索 %>
+      <%= f.search_field :title_or_body_cont ,class: :'form-control'%>
       </p>
 
-      <p>
-      <%= f.label :都道府県 %>
-      <%= f.collection_select( :prefecture_eq, @recruitment_prefecture, :prefecture, :prefecture) %>
-      </p>
+      
       <%#= f.label :deadline %>
       <%#= f.search_field :deadline %>
-      <p>
+      <p class="sidebar">
       <%= f.submit %>
       </p>
     <% end %>
 
-    <p>タグ一覧</p>
+    <%# <p>タグ一覧</p> %>
     <% @tags_industry.each do |tag| %>
       <span class="badge badge-primary">
-        <%= link_to tag, {:action => :index, :industry_tag => tag.name} %>
+        <%= link_to tag, {:action => :index, :industry_tag => tag.name}, class: :'sidebar-tag' %>
       </span>
     <% end %>
 
     <% @tags_interst.each do |tag| %>
       <span class="badge badge-info">
-        <%= link_to tag, {:action => :index, :interest_tag => tag.name} %>
+        <%= link_to tag, {:action => :index, :interest_tag => tag.name}, class: :'sidebar-tag'  %>
       </span>
     <% end %>
     </div>
