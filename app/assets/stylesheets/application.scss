@@ -21,8 +21,24 @@ body{
     color: #333;
 }
 .container{
-    max-width:800px;
     padding-top: 200px;
+}
+// @media(min-width: 1024px){
+// .container{
+//     padding-top: 200px;
+//     width:991px;
+// }
+// }
+
+
+@media (max-width: 767px){
+.container {
+    max-width: 100%;
+    padding-top:200px;
+    padding-right: 0px;
+    padding-left: 0px;
+
+}
 }
 .navbar{
     background-color:rgb(102, 186, 255); 

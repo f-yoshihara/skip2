@@ -24,8 +24,8 @@
 </div> %>
 <%# 948 %>
 <div class="container">  
-  <div class="row">
-    <div class="col-lg-4">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
     <%= search_form_for(@q, :url => { :controller => :top, :action => :index }) do |f| %>
       <p>
       <%= f.label :職種 %>
@@ -61,11 +61,11 @@
       </span>
     <% end %>
     </div>
-    <div class="col-lg-8">
+    <div class="col-md-8">
       <%= render 'results' %>
     </div>
   </div>
+  <footer>
+  <%= paginate @results_of_page %>
+  </footer>
 </div>
-<footer>
-<%= paginate @results_of_page %>
-</footer>
