@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'interview/index'
   get 'top/tag'
   get 'staff_signup/index'
   get 'company_login/index'
