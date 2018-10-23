@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :jobs
   get 'interview/index'
   get 'top/tag'
   get 'staff_signup/index'

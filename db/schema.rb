@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_23_052819) do
+ActiveRecord::Schema.define(version: 2018_10_23_084727) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -103,13 +103,6 @@ ActiveRecord::Schema.define(version: 2018_10_23_052819) do
     t.index ["student_id"], name: "index_interests_on_student_id"
   end
 
-  create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "recruitment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recruitment_id"], name: "index_jobs_on_recruitment_id"
-  end
-
   create_table "occupations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "category"
     t.integer "interests_count"
@@ -144,6 +137,7 @@ ActiveRecord::Schema.define(version: 2018_10_23_052819) do
     t.string "belongings"
     t.string "clothing"
     t.text "notices"
+    t.integer "category", default: 0, null: false
     t.index ["company_id"], name: "index_recruitments_on_company_id"
     t.index ["occupation_id"], name: "index_recruitments_on_occupation_id"
   end
@@ -254,7 +248,6 @@ ActiveRecord::Schema.define(version: 2018_10_23_052819) do
   add_foreign_key "interests", "industries"
   add_foreign_key "interests", "occupations"
   add_foreign_key "interests", "students"
-  add_foreign_key "jobs", "recruitments"
   add_foreign_key "recruitments", "companies"
   add_foreign_key "recruitments", "occupations"
   add_foreign_key "social_profiles", "users"
