@@ -10,14 +10,25 @@
 
   <!-- Steps -->
   <div class="pure-u-1-3">
-    <h2>SkyWay Video Chat</h2>
+    <h2>web面接</h2>
+    
+    <%#= form_with(model: skyway_id, local: true) do |form| %>
+      
+      <%# <div class="field"> %>
+        <%#= form.hidden_field :id, 'skyway_id' %>
+      <%# </div> %>
+
+      <%# <div class="actions"> %>
+        <%#= form.submit %>
+      <%# </div> %>
+    <%# end %>
 
     <div class="select">
-      <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+      <label for="audioSource">マイク選択: </label><select id="audioSource"></select>
     </div>
 
     <div class="select">
-      <label for="videoSource">Video source: </label><select id="videoSource"></select>
+      <label for="videoSource">カメラ選択: </label><select id="videoSource"></select>
     </div>
 
     <!-- Get local audio/video stream -->
@@ -31,9 +42,9 @@
 
     <!-- Make calls to others -->
     <div id="step2">
-      <p>Your id: <span id="my-id">...</span></p>
-      <p>Share this id with others so they can call you.</p>
-      <h3>Make a call</h3>
+      <p>あなたのID: <span id="my-id">...</span></p>
+      <p>上記のIDを通話の相手に伝えてください。</p>
+      <h3>電話をかける</h3>
       <form id="make-call" class="pure-form">
         <input type="text" placeholder="Call user id..." id="callto-id">
         <button href="#" class="pure-button pure-button-success" type="submit">Call</button>
