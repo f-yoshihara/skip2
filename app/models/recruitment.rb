@@ -34,6 +34,7 @@ class Recruitment < ApplicationRecord
   presence: true
   validates :culture,
   presence: true
+  has_one :job
 
   # ここは自動的に通過する。dataというパラメータがあれば
   def data=(data)
