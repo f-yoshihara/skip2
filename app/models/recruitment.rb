@@ -1,5 +1,4 @@
 class Recruitment < ApplicationRecord
-  enum category: { internship:0, employment:1, both:2 }
   acts_as_taggable
   acts_as_taggable_on :skills, :interests, :industries
   has_many :stocks, dependent: :destroy
@@ -9,6 +8,7 @@ class Recruitment < ApplicationRecord
   belongs_to :occupation
   has_many :entry_sheets
   has_many :staffs, through: :company
+  enum category: {internship:0, employment:1, both:2}
   enum status: {draft:0, published:1, deleted:2}
   validates :status,
     presence: true

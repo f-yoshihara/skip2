@@ -18,11 +18,11 @@
 
   <div class="field">
     <%= form.label 'インターンのみの募集' %>
-    <%= form.radio_button :status, :internship %>
+    <%= form.radio_button :category, :internship %>
     <%= form.label '採用のみの募集' %>
-    <%= form.radio_button :status, :employment %>
+    <%= form.radio_button :category, :employment %>
     <%= form.label '両方の募集' %>
-    <%= form.radio_button :status, :both %>
+    <%= form.radio_button :category, :both %>
   </div>
 
   <div class="field">
