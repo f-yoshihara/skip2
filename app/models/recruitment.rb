@@ -1,4 +1,5 @@
 class Recruitment < ApplicationRecord
+  enum category: { internship:0, employment:1, both:2 }
   acts_as_taggable
   acts_as_taggable_on :skills, :interests, :industries
   has_many :stocks, dependent: :destroy
