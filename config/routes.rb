@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :jobs
   get 'interview/index'
+  get 'top/jobs'
   get 'top/tag'
   get 'staff_signup/index'
   get 'company_login/index'

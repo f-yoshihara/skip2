@@ -1,19 +1,13 @@
 class TopController < ApplicationController
   def index
-    @occupations = Occupation.all
-    @tags = ActsAsTaggableOn::Tag.all
-    @tags_industry = Recruitment.tags_on(:industries)
-    @tags_interst = Company.tags_on(:intesrsts)
-    @recruitment_prefecture = Recruitment.select(:prefecture).distinct
-    recruitments = Recruitment.all
-    @published_ary = make_published_ary(recruitments)
-    @url = url_for(controller: :get_photo, :id => @recruitment)
+    set_sidebar
     # ransack
     recruitments = Recruitment.where(category: :internship).or(Recruitment.where(category: :both))
     find(recruitments)
   end
 
   def jobs
+    set_sidebar
     recruitments = Recruitment.where(category: :employment).or(Recruitment.where(category: :both))
     find(recruitments)
   end
@@ -22,6 +16,17 @@ class TopController < ApplicationController
   end
 
   private
+    def set_sidebar
+      @occupations = Occupation.all
+      @tags = ActsAsTaggableOn::Tag.all
+      @tags_industry = Recruitment.tags_on(:industries)
+      @tags_interst = Company.tags_on(:intesrsts)
+      @recruitment_prefecture = Recruitment.select(:prefecture).distinct
+      recruitments = Recruitment.all
+      @published_ary = make_published_ary(recruitments)
+      @url = url_for(controller: :get_photo, :id => @recruitment)
+    end
+
     def find(recruitments)
       num_of_cards = 4
       published_recruitments = recruitments.where(status: :published)

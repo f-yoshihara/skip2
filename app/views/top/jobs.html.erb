@@ -1,0 +1,71 @@
+<%# <div id="carouselControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner"> %>
+    <%# @published_ary.each_with_index do |recruitment, i| %>
+      <%# if i == 0 %>
+    <%# <div class="carousel-item"> %>
+      <%# else %>
+        <%# <div class="carousel-item"> %>
+      <%# end %>
+      <%#= image_tag('スクリーンショット 2018-10-14 17.15.11.png', class: :'d-block w-100') %>
+    <%# </div> %>
+    <%# end %>
+    <%# <div class="carousel-item active"> %>
+      <%#= image_tag('kumamoto-recruit01.jpg', class: :'d-block w-100') %>
+    <%# </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div> %>
+<%# 948 %>
+<div class="container">  
+  <div class="row">
+    <div class="col-md-4">
+    <%= search_form_for(@q, :url => { :controller => :top, :action => :index }) do |f| %>
+      <p class="sidebar">
+      <%= f.label :エリア %>
+      <%= f.collection_select( :prefecture_eq, @recruitment_prefecture, :prefecture, :prefecture, {prompt: "選択して下さい"}, {class: :'form-control'})%>
+      </p>
+
+      <p class="sidebar">
+      <%= f.label :業種 %>
+      <%= f.collection_select( :occupation_id_eq, @occupations, :id, :category, {prompt: "選択して下さい"}, {class: :'form-control'}) %>
+      </p>
+
+      <p class="sidebar">
+      <%= f.label :開催日 %>
+      <%= f.search_field :deadline , class: :'form-control'%>
+      </p>
+
+      <p class="sidebar" style="margin-bottom:35px;">
+      <%= f.label :フリーワード %>
+      <%= f.search_field :title_or_body_cont ,class: :'form-control'%>
+      </p>
+
+      <%= f.submit "検索" ,class: :'sidebar btn btn-light btn-block'%>
+    <% end %>
+
+    <%# <p>タグ一覧</p> %>
+    <% @tags_industry.each do |tag| %>
+        <%= link_to tag, {:action => :index, :industry_tag => tag.name}, class: :'sidebar-tag btn btn-pill btn-block badge-info sidebar rounded' %>
+    <% end %>
+
+    <% @tags_interst.each do |tag| %>
+      <button class="btn btn-pill d-block badge-info">
+        <%= link_to tag, {:action => :index, :interest_tag => tag.name} %>
+      </button>
+    <% end %>
+    </div>
+    <div class="col-md-8" style="margin-top:15px;">
+      <%= render 'results' %>
+    </div>
+  </div>
+  <div class="row justify-content-end">
+    <%= paginate @results_of_page%>
+  </div>
+</div>
