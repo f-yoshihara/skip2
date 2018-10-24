@@ -37,7 +37,7 @@ class Recruitment < ApplicationRecord
   presence: true
   has_one :job
 
-  # ここは自動的に通過する。dataというパラメータがあれば
+  # dataというパラメータがある場合に呼び出される。
   def data=(data)
     self.ctype = data.content_type
     self.photo = data.read

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_23_084727) do
+ActiveRecord::Schema.define(version: 2018_10_24_104402) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -50,6 +50,22 @@ ActiveRecord::Schema.define(version: 2018_10_23_084727) do
   create_table "companies_industries", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "company_id", null: false
     t.bigint "industry_id", null: false
+  end
+
+  create_table "employment_entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "recruitment_id"
+    t.integer "status", default: 0, null: false
+    t.text "answer1"
+    t.text "answer2"
+    t.text "answer3"
+    t.text "answer4"
+    t.text "answer5"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recruitment_id"], name: "index_employment_entries_on_recruitment_id"
+    t.index ["user_id", "recruitment_id"], name: "index_employment_entries_on_user_id_and_recruitment_id", unique: true
+    t.index ["user_id"], name: "index_employment_entries_on_user_id"
   end
 
   create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -239,6 +255,8 @@ ActiveRecord::Schema.define(version: 2018_10_23_084727) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "employment_entries", "recruitments"
+  add_foreign_key "employment_entries", "users"
   add_foreign_key "entries", "recruitments"
   add_foreign_key "entries", "users"
   add_foreign_key "entry_sheets", "companies"

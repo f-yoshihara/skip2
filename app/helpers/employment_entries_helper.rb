@@ -1,0 +1,2 @@
+module EmploymentEntriesHelper
+end

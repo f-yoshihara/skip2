@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'employment_entries/destroy', to: 'entries#destroy'
+  get 'employment_entries/create', to: 'entries#create'
+  resources :employment_entries, only: [:new, :create, :destroy]
   get 'interview/index'
   get 'top/jobs'
   get 'top/tag'

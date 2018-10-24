@@ -7,13 +7,11 @@ class RecruitmentsController < ApplicationController
   end
 
   def show
-    @url = url_for(controller: :get_photo, :id => @recruitment)
+    get_photo
   end
 
   def new
     @recruitment = Recruitment.new
-    # @recruitment.industry_list = 
-    # occupationセレクトボックス作成用
     @occupations = Occupation.all
   end
 
@@ -55,16 +53,14 @@ class RecruitmentsController < ApplicationController
     end
   end
 
-  # def get_photo
-  #   send_data @recruitment.photo, type: @recruitment.ctype, disposition: :inline
-  # end
-
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def get_photo
+      @url = url_for(controller: :get_photo, :id => @recruitment)
+    end
+
     def set_recruitment
       @recruitment = Recruitment.find(params[:id])
       @occupations = Occupation.all
-      
     end
 
     def check_logined

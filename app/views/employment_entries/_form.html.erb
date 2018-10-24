@@ -1,0 +1,94 @@
+<%= form_with(model: entry, local: true) do |form| %>
+  <% if entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+      <% entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.fields_for @user do |user_form| %>
+  <div class="field">
+    <%= user_form.label :name, '名前' %>
+    <%= user_form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= user_form.label :school_year, '学年' %>
+    <%= user_form.text_field :school_year %>
+  </div>
+
+  <div class="field">
+    <%= user_form.label :school_name, '学校名' %>
+    <%= user_form.text_field :school_name %>
+  </div>
+  <% end %>
+
+  <%= form.hidden_field :user_id, :value => current_user.id %>
+  <%= form.hidden_field :recruitment_id, :value => recruitment.id %>
+
+  <% unless recruitment.question1.blank? %>
+    <div class="field">
+      <%= form.label "#{recruitment.question1}" %>
+      <%= form.text_area :answer1 %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :answer1, :value => "質問が設定されていません。" %>
+  <% end %>
+
+  <% unless recruitment.question2.blank? %>
+    <div class="field">
+      <%= form.label "#{recruitment.question2}" %>
+      <%= form.text_area :answer2 %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :answer2, :value => "質問が設定されていません。" %>
+  <% end %>
+
+  <% unless recruitment.question3.blank? %>
+    <div class="field">
+      <%= form.label "#{recruitment.question3}" %>
+      <%= form.text_area :answer3 %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :answer3, :value => "質問が設定されていません。" %>
+  <% end %>
+
+  <% unless recruitment.question4.blank? %>
+    <div class="field">
+      <%= form.label "#{recruitment.question4}" %>
+      <%= form.text_area :answer4 %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :answer4, :value => "質問が設定されていません。" %>
+  <% end %>
+
+  <% unless recruitment.question5.blank? %>
+    <div class="field">
+      <%= form.label "#{recruitment.question5}" %>
+      <%= form.text_area :answer5 %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :answer5, :value => "質問が設定されていません。" %>
+  <% end %>
+
+  <div class="field">
+    <%= form.label '下書きとして保存' %>
+    <%= form.radio_button :status, :draft %>
+    <%= form.label '上記の内容で応募する' %>
+    <%= form.radio_button :status, :published %>
+  </div>
+
+  <div class="field">
+    <%= form.check_box :agreement, {}, 'yes' %>
+    <%= form.label 'プライバシーポリシーに同意する' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit('申請する') %>
+  </div>
+<% end %>
