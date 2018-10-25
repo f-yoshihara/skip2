@@ -21,10 +21,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
 
-          <li class="nav-item">
-            <%= link_to '採用情報一覧へ', top_jobs_path, class: :'nav-link' %>
-          </li>
-
+          <% if current_page?(controller: 'top', action: 'jobs')%>
+            <li class="nav-item">
+              <%= link_to 'インターン情報一覧へ', root_path, class: :'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to '採用情報一覧へ', top_jobs_path, class: :'nav-link' %>
+            </li>
+          <% end %>
+          
           <% if session[:staff] %>
             <li class="nav-item">
               <%= link_to '採用者用管理ページ', recruitment_list_index_path, class: :'nav-link'%>
