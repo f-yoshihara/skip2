@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_25_061102) do
+ActiveRecord::Schema.define(version: 2018_10_25_080501) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -247,6 +247,16 @@ ActiveRecord::Schema.define(version: 2018_10_25_061102) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "school_id"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_teachers_on_school_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -260,7 +270,9 @@ ActiveRecord::Schema.define(version: 2018_10_25_061102) do
     t.integer "school_year"
     t.string "school_name"
     t.string "email"
+    t.bigint "school_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["school_id"], name: "index_users_on_school_id"
   end
 
   add_foreign_key "employment_entries", "recruitments"
@@ -280,4 +292,6 @@ ActiveRecord::Schema.define(version: 2018_10_25_061102) do
   add_foreign_key "staffs", "companies"
   add_foreign_key "stocks", "recruitments"
   add_foreign_key "stocks", "users"
+  add_foreign_key "teachers", "schools"
+  add_foreign_key "users", "schools"
 end

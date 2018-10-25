@@ -1,4 +1,5 @@
 class School < ApplicationRecord
+  has_many :teacher
   enum category: {
     general:0,
     agricultural:1,
