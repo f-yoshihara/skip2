@@ -3,6 +3,7 @@ class Recruitment < ApplicationRecord
   acts_as_taggable_on :skills, :interests, :industries
   has_many :stocks, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :employment_entries, dependent: :destroy
   has_many :users, through: :entries
   belongs_to :company
   belongs_to :occupation

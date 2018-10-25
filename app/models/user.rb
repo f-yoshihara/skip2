@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :social_profiles, dependent: :destroy
   has_many :stocks, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :employment_entries, dependent: :destroy
 
   def email_required?
     !email.blank? && super

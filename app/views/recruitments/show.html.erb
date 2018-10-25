@@ -123,7 +123,7 @@
     <% end %>
   <% end %>
   <% if @recruitment.category == 'both' || @recruitment.category == 'employment' %>
-    <% if current_user.entries.where(recruitment_id: @recruitment.id).exists? %>
+    <% if current_user.employment_entries.where(recruitment_id: @recruitment.id).exists? %>
       <div class = "btn">
         <%= link_to('採用に応募済み', employment_entries_destroy_path(@recruitment.id), class: :'btn btn-primary float-right disabled') %>
       </div>
