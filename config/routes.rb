@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :teachers do
+    resources :login, only: [:index, :destroy]
+  end
+  resources :teachers
   get 'employment_entries/destroy', to: 'entries#destroy'
   get 'employment_entries/create', to: 'entries#create'
   resources :employment_entries, only: [:new, :create, :destroy]
