@@ -6,7 +6,8 @@ class TeachersController < ApplicationController
 
   def new
     @teacher = Teacher.new
-    @school = School.new
+    @school  = School.new
+    @schools = School.all
   end
 
   def edit
@@ -14,8 +15,10 @@ class TeachersController < ApplicationController
 
   def create
     @teacher = Teacher.new(teacher_params)
-    @school = @teacher.build_school(school_params)
-    if @school.save && @teacher.save
+    unless @teacher.school
+      create_school
+    end
+    if @teacher.save
       reset_session
       session[:teacher] = @teacher.id
       redirect_to root_path
@@ -45,6 +48,13 @@ class TeachersController < ApplicationController
   end
 
   private
+    def create_school
+      @school = @teacher.build_school(school_params)
+      unless @school.save
+        redirect_to root_path
+      end
+    end
+
     def set_teacher
       @teacher = Teacher.find(params[:id])
     end

@@ -31,6 +31,11 @@
     <%= form.text_field :email %>
   </div>
 
+  <div class="field">
+    <%= form.label :学校名 %>
+    <%= form.collection_select( :school_id, schools, :id, :name) %>
+  </div>
+
   <%= fields_for @school do |school_form| %>
     <div class="field">
       <%= school_form.label :name, '学校名' %>
