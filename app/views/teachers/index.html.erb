@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <p style="color: Red"><%= @error %></p>
-<%= form_tag controller: :login, action: :index do %>
+<%= form_tag teachers_login_index_path do %>
   <div class="field">
     <%= label_tag :email, 'email' %><br/>
     <%= text_field_tag :email, '', size: 20 %>
