@@ -14,8 +14,4 @@ class School < ApplicationRecord
   }
   validates :name,
     presence: true
-  validates :category,
-    presence: true
-  validates :overview,
-    presence: true
 end

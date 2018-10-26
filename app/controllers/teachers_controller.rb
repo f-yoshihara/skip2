@@ -1,12 +1,12 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
   before_action :check_logined, only: [:edit, :update, :destroy]
-
   def show
   end
 
   def new
     @teacher = Teacher.new
+    @school = School.new
   end
 
   def edit
@@ -14,10 +14,11 @@ class TeachersController < ApplicationController
 
   def create
     @teacher = Teacher.new(teacher_params)
-    if @teacher.save
+    @school = @teacher.build_school(school_params)
+    if @school.save && @teacher.save
       reset_session
       session[:teacher] = @teacher.id
-      redirect_to recruitment_list_index_path
+      redirect_to root_path
     else
       redirect_to root_path
     end
@@ -64,5 +65,9 @@ class TeachersController < ApplicationController
 
     def teacher_params
       params.require(:teacher).permit(:school_id, :name, :password, :password_confirmation, :email)
+    end
+
+    def school_params
+      params.require(:school).permit(:name)
     end
 end

@@ -30,17 +30,27 @@
               <%= link_to '採用情報一覧へ', top_jobs_path, class: :'nav-link' %>
             </li>
           <% end %>
-          
+
           <% if session[:staff] %>
             <li class="nav-item">
-              <%= link_to '採用者用管理ページ', recruitment_list_index_path, class: :'nav-link'%>
+              <%= link_to '採用者用ページ', recruitment_list_index_path, class: :'nav-link'%>
             </li>
-
           <% else %>
             <li class="nav-item">
-              <%= link_to "掲載を希望される企業様", staff_login_index_path, class: :'nav-link nav-link-left'%>
+              <%= link_to '掲載を希望される企業様', staff_login_index_path, class: :'nav-link nav-link-left'%>
             </li>
           <% end %>
+
+          <% if session[:teacher] %>
+            <li class="nav-item">
+              <%= link_to '高校教員用ページ', root_path, class: :'nav-link'%>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to '高校教員用入口', teachers_path, class: :'nav-link nav-link-left'%>
+            </li>
+          <% end %>
+          
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
