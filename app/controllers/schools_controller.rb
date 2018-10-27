@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-  before_action :set_teacher, only: [:show, :edit, :update, :destroy]
+  # before_action :set_teacher, only: [:show, :edit, :update, :destroy]
   before_action :set_school, only: [:show, :edit, :update, :destroy]
   before_action :check_logined, only: [:edit, :update, :destroy]
 
@@ -34,10 +34,6 @@ class SchoolsController < ApplicationController
   end
 
   private
-    def set_teacher
-      @teacher = Teacher.find(params[:id])
-    end
-
     def set_school
       @school = School.find(params[:id])
     end
