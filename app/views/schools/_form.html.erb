@@ -9,10 +9,9 @@
       </ul>
     </div>
   <% end %>
-  <%#%= form.hidden_field :company_id, :value => staff.company_id %>
 
   <div class="field">
-    <%= form.select :category, School.categories.keys.to_a, {} %>
+    <%= form.select :category, School.categories.map { |k, v| [t("school.category.#{k}"), k]}%>
   </div>
 
   <div class="field">

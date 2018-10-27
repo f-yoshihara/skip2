@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :schools, only: [:index, :show, :edit]
+  resources :schools, only: [:index, :show, :edit, :update]
   namespace :teachers do
     resources :login do
       post :index, on: :collection

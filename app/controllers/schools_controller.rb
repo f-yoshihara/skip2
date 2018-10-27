@@ -1,5 +1,6 @@
 class SchoolsController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
+  before_action :set_school, only: [:show, :edit, :update, :destroy]
   before_action :check_logined, only: [:edit, :update, :destroy]
 
   def index
@@ -7,11 +8,9 @@ class SchoolsController < ApplicationController
   end
 
   def show
-    @school = School.find(params[:id])
   end
 
   def edit
-    @school = School.find(params[:id])
   end
 
   def update
@@ -39,6 +38,10 @@ class SchoolsController < ApplicationController
       @teacher = Teacher.find(params[:id])
     end
 
+    def set_school
+      @school = School.find(params[:id])
+    end
+
     def check_logined
       if session[:teacher]
         begin
@@ -54,6 +57,6 @@ class SchoolsController < ApplicationController
     end
 
     def school_params
-      params.require(:school).parmit(:name)
+      params.require(:school).permit(:name, :category, :overview)
     end
 end

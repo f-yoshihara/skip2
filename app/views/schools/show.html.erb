@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>学校名:</strong>
+  <%= @school.name %>
+</p>
+
+<p>
+  <strong>種別:</strong>
+  <%= t("school.category.#{@school.category}") %>
+</p>
+
+<p>
+  <strong>紹介文:</strong>
+  <%= @school.overview %>
+</p>
+
+<%= link_to 'Edit', edit_school_path(@school) %> |

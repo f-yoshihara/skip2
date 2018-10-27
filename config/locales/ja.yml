@@ -1,0 +1,13 @@
+ja:
+  school:
+    category: 
+      general: '普通'
+      agricultural: '農業'
+      industrial: '工業'
+      commercial: '商業'
+      fishery: '水産'
+      home_economy: '家庭科'
+      nursing: '看護'
+      information: '情報通信'
+      welfare: '福祉'
+      other: 'その他'
