@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'interview/index'
   get 'top/jobs'
   get 'top/tag'
-  get 'staff_signup/index'
   get 'entries/destroy', to: 'entries#destroy'
   get 'entries/create', to: 'entries#create'
   get 'stocks/destroy', to: 'stocks#destroy'
