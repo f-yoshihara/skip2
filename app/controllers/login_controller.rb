@@ -23,7 +23,7 @@ class LoginController < ApplicationController
     end
   end
 
-  def auth
+  def company_auth
     company = Company.find_by(name: params[:name])
     if company && company.authenticate(params[:password])
       reset_session
