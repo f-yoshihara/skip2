@@ -48,7 +48,7 @@ class SchoolsController < ApplicationController
       end
       unless @teacher
         flash[:referer] = request.fullpath
-        redirect_to controller: :teacher, action: :login
+        redirect_to teachers_login_index_path
       end
     end
 

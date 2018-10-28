@@ -105,8 +105,7 @@ class StaffsController < ApplicationController
     #     redirect_to controller: :login, action: :index
     #   end
     # end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def staff_params
       params.require(:staff).permit(:company_id, :name, :password, :password_confirmation, :email)
     end
