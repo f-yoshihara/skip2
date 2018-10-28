@@ -1,25 +1,45 @@
 class LoginController < ApplicationController
-  #skip_before_action :check_logined
+  def teacher_auth
+    teacher = Teacher.find_by(email: params[:email])
+    if teacher && teacher.authenticate(params[:password])
+      reset_session
+      session[:teacher] = teacher.id
+      redirect_to root_path
+    else
+      flash.now[:referer] = params[:referer]
+      @error = 'ユーザ名／パスワードが間違っています。'
+      render 'index'
+    end
+  end
 
- def auth
-  # paramsで受け取った:nameでCompanyインスタンスを作る。
-   company = Company.find_by(name: params[:name])
-  # companyインスタンスが作られていて、かつauthenticateできれば
-   if company && company.authenticate(params[:password]) then
-     reset_session
-     #セッションにcompanyの主キーを入れる。
-     session[:company] = company.id
-    # :refererにはflash[:referer]が入っているためnewの画面に戻れる。
-     redirect_to params[:referer]
-   else
-     flash.now[:referer] = params[:referer]
-     @error = 'ユーザ名／パスワードが間違っています。'
-     render 'index'
-   end
- end
+  def staff_auth
+    staff = Staff.find_by(email: params[:email])
+    if staff && staff.authenticate(params[:password])
+      reset_session
+      session[:staff] = staff.id
+      redirect_to recruitment_list_index_path
+    else
+      flash.now[:referer] = params[:referer]
+      @error = 'ユーザ名／パスワードが間違っています。'
+      render 'index'
+    end
+  end
 
- def logout
-   reset_session
-   redirect_to '/'
- end
+  def auth
+    company = Company.find_by(name: params[:name])
+    if company && company.authenticate(params[:password])
+      reset_session
+      session[:company] = company.id
+      redirect_to params[:referer]
+    else
+      flash.now[:referer] = params[:referer]
+      @error = 'ユーザ名／パスワードが間違っています。'
+      render 'index'
+    end
+  end
+
+  def logout
+    reset_session
+    redirect_to '/'
+  end
 end

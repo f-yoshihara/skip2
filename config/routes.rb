@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
   resources :schools, only: [:index, :show, :edit, :update]
-  namespace :teachers do
-    resources :login do
-      post :index, on: :collection
-    end
-  end
   resources :teachers
   get 'employment_entries/destroy', to: 'entries#destroy'
   get 'employment_entries/create', to: 'entries#create'
@@ -44,9 +39,11 @@ Rails.application.routes.draw do
   resources :occupations
   resources :industries
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'login/index'
-  get 'login/logout'
-  get 'staff_login/index'
+  get  'login/user'
+  get  'login/staff'
+  post 'login/staff_auth'
+  get  'login/teacher'
+  post 'login/teacher_auth'
   post 'login/auth'
-  post 'staff_login/auth'
+  get  'login/logout'
 end

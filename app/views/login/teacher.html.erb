@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+<p style="color: Red"><%= @error %></p>
+<%= form_tag action: :teacher_auth do %>
+  <%= render 'form_inner' %>
+<% end %>
+
+<h1>教員用新規登録</h1>
+<div class="d-flex">
+  <%= link_to '新規作成', new_teacher_path, class: :'btn btn-success' %>
+</div>
+
+<%= link_to '戻る', root_path %>
