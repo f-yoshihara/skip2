@@ -6,9 +6,8 @@ class LoginController < ApplicationController
       session[:teacher] = teacher.id
       redirect_to root_path
     else
-      flash.now[:referer] = params[:referer]
-      @error = 'ユーザ名／パスワードが間違っています。'
-      render 'index'
+      flash_reset
+      render 'teacher'
     end
   end
 
@@ -19,9 +18,8 @@ class LoginController < ApplicationController
       session[:staff] = staff.id
       redirect_to recruitment_list_index_path
     else
-      flash.now[:referer] = params[:referer]
-      @error = 'ユーザ名／パスワードが間違っています。'
-      render 'index'
+      flash_reset
+      render 'staff'
     end
   end
 
@@ -32,9 +30,8 @@ class LoginController < ApplicationController
       session[:company] = company.id
       redirect_to params[:referer]
     else
-      flash.now[:referer] = params[:referer]
-      @error = 'ユーザ名／パスワードが間違っています。'
-      render 'index'
+      flash_reset
+      render 'company'
     end
   end
 
@@ -42,4 +39,10 @@ class LoginController < ApplicationController
     reset_session
     redirect_to '/'
   end
+
+  private
+    def flash_reset
+      flash.now[:referer] = params[:referer]
+      @error = 'email／パスワードが間違っています。'
+    end
 end
