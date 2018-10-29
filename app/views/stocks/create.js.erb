@@ -1,35 +1,4 @@
-
-$('#<%= @recruitment_id %>').html(
-  "<%= escape_javascript('ストック済み') %>"
-);
-
-$('#<%= @recruitment_id %>').attr(
-  'href', "<%= escape_javascript('/stocks/destroy.' + @recruitment_id) %>"
-);
-
-
-<%
-=begin
-%>
-
-if($('#<%= @recruitment_id %').html() == 'ストック'){
-  $('#<%= @recruitment_id %>').html(
-    "<%= escape_javascript('ストック済み') %>"
-  );
-  
-  $('#<%= @recruitment_id %>').attr(
-    'href', "<%= escape_javascript('/stocks/destroy' + @recruitment_id) %>"
-  );
-}else{
-  $('#<%= @recruitment_id %>').html(
-    "<%= escape_javascript('ストック') %>"
-  );
-  
-  $('#<%= @recruitment_id %>').attr(
-    'href', "<%= escape_javascript('/stocks/create' + @recruitment_id) %>"
-  );
-}
-
-<%
-=end
-%>
+$('#<%= @recruitment_id %>').attr({
+  value: "<%= escape_javascript('ストック済み') %>",
+  href:  "<%= escape_javascript('/stocks/destroy.' + @recruitment_id) %>"
+});
