@@ -1,4 +1,7 @@
+$('#<%= @recruitment_id %>').html(
+  "<%= escape_javascript('ストック済み') %>"
+);
 $('#<%= @recruitment_id %>').attr({
-  value: "<%= escape_javascript('ストック済み') %>",
-  href:  "<%= escape_javascript('/stocks/destroy.' + @recruitment_id) %>"
+  'data-method': "delete",
+  href:  "<%= escape_javascript('/stocks/' + @recruitment_id) %>"
 });
