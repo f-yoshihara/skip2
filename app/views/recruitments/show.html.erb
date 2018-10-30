@@ -103,33 +103,33 @@
 <% if current_user %>
   <% if current_user.stocks.where(recruitment_id: @recruitment.id).exists? %>
     <div class = "btn">
-      <%= link_to('ストック済み', stocks_destroy_path(@recruitment.id), class: :'btn btn-success float-right', id: "#{@recruitment.id}", remote: true) %>
+      <%= link_to('ストック済み', stock_path(@recruitment), method: :delete, class: :'btn btn-success float-right', id: "#{@recruitment.id}", remote: true) %>
     </div>
   <% else %>
     <div class = "btn">
-      <%= link_to('ストックする', stocks_create_path(@recruitment.id), class: :'btn btn-success float-right', id: "#{@recruitment.id}", remote: true) %>
+      <%= link_to('ストックする', stocks_path(recruitment_id: @recruitment), method: :post, class: :'btn btn-success float-right', id: "#{@recruitment.id}", remote: true) %>
     </div>
   <% end %>
   
   <% if @recruitment.category == 'both' || @recruitment.category == 'internship' %>
     <% if current_user.entries.where(recruitment_id: @recruitment.id).exists? %>
       <div class = "btn">
-        <%= link_to('インターン応募済み', entries_destroy_path(@recruitment.id), class: :'btn btn-secondary float-right disabled') %>
+        <%= link_to('インターン応募済み', entry_path(@recruitment), class: :'btn btn-secondary float-right disabled') %>
       </div>
     <% else %>
       <div class = "btn">
-        <%= link_to('インターンに応募する', new_entry_path(@recruitment.id), class: :'btn btn-info float-right') %>
+        <%= link_to('インターンに応募する', new_entry_path(@recruitment), class: :'btn btn-info float-right') %>
       </div>
     <% end %>
   <% end %>
   <% if @recruitment.category == 'both' || @recruitment.category == 'employment' %>
     <% if current_user.employment_entries.where(recruitment_id: @recruitment.id).exists? %>
       <div class = "btn">
-        <%= link_to('採用に応募済み', employment_entries_destroy_path(@recruitment.id), class: :'btn btn-primary float-right disabled') %>
+        <%= link_to('採用に応募済み', employment_entry_path(@recruitment), class: :'btn btn-primary float-right disabled') %>
       </div>
     <% else %>
       <div class = "btn">
-        <%= link_to('採用に応募する', new_employment_entry_path(@recruitment.id), class: :'btn btn-primary float-right') %>
+        <%= link_to('採用に応募する', new_employment_entry_path(@recruitment), class: :'btn btn-primary float-right') %>
       </div>
     <% end %>
   <% end %>

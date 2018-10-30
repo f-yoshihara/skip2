@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :schools, only: [:index, :show, :edit, :update]
   resources :teachers
-  get 'employment_entries/destroy', to: 'entries#destroy'
-  get 'employment_entries/create', to: 'entries#create'
   resources :employment_entries, only: [:new, :create, :destroy]
   get 'interview/index'
   get 'top/jobs'
@@ -27,7 +25,6 @@ Rails.application.routes.draw do
   resources :companies
   resources :occupations
   resources :industries
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get  'login/user'
   get  'login/staff'
   post 'login/staff_auth'
