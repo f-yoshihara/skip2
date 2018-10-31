@@ -17,6 +17,7 @@ class LoginController < ApplicationController
     if staff && staff.authenticate(params[:password])
       reset_session
       session[:staff] = staff.id
+      cookies.encrypted[:staff_id] = staff.id
       redirect_to recruitment_list_index_path
     else
       flash_reset
@@ -39,6 +40,7 @@ class LoginController < ApplicationController
   def logout
     reset_session
     cookies.delete :teacher_id
+    cookies.delete :staff_id
     redirect_to '/'
   end
 
