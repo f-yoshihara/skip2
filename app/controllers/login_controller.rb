@@ -4,6 +4,7 @@ class LoginController < ApplicationController
     if teacher && teacher.authenticate(params[:password])
       reset_session
       session[:teacher] = teacher.id
+      cookies.encrypted[:teacher_id] = teacher.id
       redirect_to root_path
     else
       flash_reset
@@ -37,6 +38,7 @@ class LoginController < ApplicationController
 
   def logout
     reset_session
+    cookies.delete :teacher_id
     redirect_to '/'
   end
 
