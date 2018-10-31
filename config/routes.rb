@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/show'
   resources :schools, only: [:index, :show, :edit, :update]
   resources :teachers
   resources :employment_entries, only: [:new, :create, :destroy]
@@ -30,4 +31,5 @@ Rails.application.routes.draw do
   post 'login/teacher_auth'
   post 'login/auth'
   get  'login/logout'
+  # mount ActionCable.server => '/cable'
 end

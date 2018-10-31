@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_25_080501) do
+ActiveRecord::Schema.define(version: 2018_10_31_051343) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2018_10_25_080501) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "chats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "school_id"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_chats_on_company_id"
+    t.index ["school_id"], name: "index_chats_on_school_id"
   end
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -117,6 +126,14 @@ ActiveRecord::Schema.define(version: 2018_10_25_080501) do
     t.index ["industry_id"], name: "index_interests_on_industry_id"
     t.index ["occupation_id"], name: "index_interests_on_occupation_id"
     t.index ["student_id"], name: "index_interests_on_student_id"
+  end
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "chat_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
   end
 
   create_table "occupations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -275,6 +292,8 @@ ActiveRecord::Schema.define(version: 2018_10_25_080501) do
     t.index ["school_id"], name: "index_users_on_school_id"
   end
 
+  add_foreign_key "chats", "companies"
+  add_foreign_key "chats", "schools"
   add_foreign_key "employment_entries", "recruitments"
   add_foreign_key "employment_entries", "users"
   add_foreign_key "entries", "recruitments"
@@ -286,6 +305,7 @@ ActiveRecord::Schema.define(version: 2018_10_25_080501) do
   add_foreign_key "interests", "industries"
   add_foreign_key "interests", "occupations"
   add_foreign_key "interests", "students"
+  add_foreign_key "messages", "chats"
   add_foreign_key "recruitments", "companies"
   add_foreign_key "recruitments", "occupations"
   add_foreign_key "social_profiles", "users"
