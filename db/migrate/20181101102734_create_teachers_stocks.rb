@@ -1,6 +1,6 @@
-class CreateFollows < ActiveRecord::Migration[5.2]
+class CreateTeachersStocks < ActiveRecord::Migration[5.2]
   def change
-    create_table :follows do |t|
+    create_table :teachers_stocks do |t|
       t.references :teacher, foreign_key: true
       t.references :company, foreign_key: true
 
