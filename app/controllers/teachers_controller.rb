@@ -1,7 +1,8 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
-  before_action :check_logined, only: [:edit, :update, :destroy]
+  before_action :check_logined, only: [:show, :edit, :update, :destroy]
   def show
+    @teachers_stocks = @teacher.teachers_stocks
   end
 
   def new
@@ -62,7 +63,7 @@ class TeachersController < ApplicationController
     def check_logined
       if session[:teacher] then
         begin
-          @teacher = teacher.find(session[:teacher])
+          @teacher = Teacher.find(session[:teacher])
         rescue ActiveRecord::RecordNotFound
           reset_session
         end

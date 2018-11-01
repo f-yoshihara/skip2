@@ -1,5 +1,10 @@
 class RoomsController < ApplicationController
-  def show
+  def index
+    @user = current_user
     @messages = Message.all
+  end
+
+  def show
+    
   end
 end

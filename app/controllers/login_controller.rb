@@ -5,7 +5,7 @@ class LoginController < ApplicationController
       reset_session
       session[:teacher] = teacher.id
       cookies.encrypted[:teacher_id] = teacher.id
-      redirect_to root_path
+      redirect_to teacher_path(teacher)
     else
       flash_reset
       render 'teacher'
