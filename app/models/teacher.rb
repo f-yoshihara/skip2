@@ -9,4 +9,12 @@ class Teacher < ApplicationRecord
     presence: true,
     uniqueness: true,
     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+
+  def can_access?(chat)
+    if chat.school == self.school
+      true
+    else
+      false
+    end
+  end
 end

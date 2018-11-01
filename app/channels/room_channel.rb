@@ -1,12 +1,11 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "room_channel"
-    # room = Room.find(params['room'])
-    # if current_user.can_access?(room)
-    #   stream_from "messages_#{params['room']}_channel"
-    # else
-    #   reject
-    # end
+    chat = Chat.find(params[:room])
+    if current_user.can_access?(chat)
+      stream_from "room_#{params[:room]}_channel"
+    else
+      reject
+    end
   end
 
   def unsubscribed
@@ -14,9 +13,9 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    message = Message.new(content: data['message'])
+    message = Message.new(chat_id: params[:room], content: data['message'])
     message.save
-    ActionCable.server.broadcast 'room_channel', message: render_message(message)
+    ActionCable.server.broadcast "room_#{params[:room]}_channel", message: render_message(message)
   end
 
   private 
