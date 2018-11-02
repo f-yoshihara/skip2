@@ -80,65 +80,67 @@
     <%= form.text_area :culture %>
   </div>
 
-  <div class="field">
-    <%= form.label :締め切り %>
-    <%= form.date_select :deadline %>
-  </div>
+  <%# <div class="field"> %>
+    <%#= form.label :締め切り %>
+    <%#= form.date_select :deadline %>
+  <%# </div> %>
 
-  <p>応募者への質問を5つまで設定できます</p>
+  <%# <p>応募者への質問を5つまで設定できます</p> %>
 
-  <div class="field">
-    <%= form.label :質問1 %>
-    <%= form.text_area :question1 %>
-  </div>
+  <%# <div class="field"> %>
+    <%#%= form.label :質問1 %>
+    <%#= form.text_area :question1 %>
+  <%# </div> %>
 
-  <div class="field">
-    <%= form.label :質問2 %>
-    <%= form.text_area :question2 %>
-  </div>
+  <%# <div class="field"> %>
+    <%#= form.label :質問2 %>
+    <%#= form.text_area :question2 %>
+  <%# </div> %>
 
-  <div class="field">
-    <%= form.label :質問3 %>
-    <%= form.text_area :question3 %>
-  </div>
+  <%# <div class="field"> %>
+    <%#= form.label :質問3 %>
+    <%#= form.text_area :question3 %>
+  <%# </div> %>
 
-  <div class="field">
-    <%= form.label :質問4 %>
-    <%= form.text_area :question4 %>
-  </div>
+  <%# <div class="field"> %>
+    <%#= form.label :質問4 %>
+    <%#= form.text_area :question4 %>
+  <%# </div> %>
 
-  <div class="field">
-    <%= form.label :質問5 %>
-    <%= form.text_area :question5 %>
-  </div>
+  <%# <div class="field"> %>
+    <%#= form.label :質問5 %>
+    <%#= form.text_area :question5 %>
+  <%# </div> %>
 
   <div class="field">
     <%= form.label :定員数 %>
     <%= form.text_field :capacity %>
   </div>
 
-  <div class="field">
-    <%= form.label :日程 %>
-    <%= form.date_select :schedule %>
-  </div>
+  <%# <div class="field"> %>
+    <%#= form.label :日程 %>
+    <%#= form.date_select :schedule %>
+  <%# </div> %>
 
-  <div class="field">
-    <%= form.label :開始時間 %>
-    <%= form.time_select :start_time %>
-  </div>
+  <%# <div class="field"> %>
+    <%#%= form.label :開始時間 %>
+    <%#= form.time_select :start_time %>
+  <%# </div> %>
 
-  <div class="field">
-    <%= form.label :終了時間 %>
-    <%= form.time_select :end_time %>
-  </div>
+  <%# <div class="field"> %>
+    <%#= form.label :終了時間 %>
+    <%#= form.time_select :end_time %>
+  <%# </div> %>
 
+<%# 臨時で給料→元は持ち物 %>
   <div class="field">
-    <%= form.label :持ち物 %>
+    <%= form.label :給料 %>
     <%= form.text_field :belongings %>
   </div>
 
+<%# 臨時で求人番号→元は服装 %>
   <div class="field">
-    <%= form.label :服装 %>
+    <%= form.label :求人番号 %>
     <%= form.text_field :clothing %>
   </div>
 
