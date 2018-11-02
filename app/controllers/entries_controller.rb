@@ -22,7 +22,7 @@ class EntriesController < InheritedResources::Base
   end
 
   def destroy
-    @entry = Entry.find_by(recruitment_id: params[:format])
+    @entry = Entry.find_by(recruitment_id: params[:id])
     @entry.destroy
   end
 

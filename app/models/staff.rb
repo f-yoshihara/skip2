@@ -11,4 +11,12 @@ class Staff < ApplicationRecord
     presence: true,
     uniqueness: true,
     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+
+  def can_access?(chat)
+    if chat.company == self.company
+      true
+    else
+      false
+    end
+  end
 end

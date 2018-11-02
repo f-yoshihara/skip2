@@ -1,8 +1,8 @@
-
 $('#<%= @recruitment_id %>').html(
   "<%= escape_javascript('ストックする') %>"
 );
 
-$('#<%= @recruitment_id %>').attr(
-  'href', "<%= escape_javascript('/stocks/create.' + @recruitment_id) %>"
-);
+$('#<%= @recruitment_id %>').attr({
+  'data-method': "post",
+  href:  "<%= escape_javascript('/stocks?recruitment_id=' + @recruitment_id) %>"
+});
