@@ -1,0 +1,14 @@
+<div>
+  <% if session[:teacher] %>
+    <% if teacher.followings.where(company_id: company).exists? %>
+      <div class = "btn">
+        <%= link_to('フォロー中', following_path(company), method: :delete, class: :'btn btn-success float-right', id: "#{company.id}", remote: true) %>
+      </div>
+      
+    <% else %>
+      <div class = "btn">
+        <%= link_to('フォローする', followings_path(company_id: company), method: :post, class: :'btn btn-success float-right', id: "#{company.id}", remote: true) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

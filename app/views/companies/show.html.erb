@@ -1,24 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>会社名:</strong>
   <%= @company.name %>
 </p>
 
 <p>
-  <strong>Password digest:</strong>
-  <%= @company.password_digest %>
-</p>
-
-<p>
-  <strong>Established:</strong>
+  <strong>設立年:</strong>
   <%= @company.established %>
 </p>
 
 <p>
-  <strong>Url:</strong>
-  <%= @company.url %>
+  <%= link_to '企業ホームページ', @company.url %>
 </p>
 
-<%= link_to 'トップページへ戻る', root_path %> |
-<%= link_to '次へ進む', new_staff_path(@company) %> 
+<%= render 'buttons', company: @company, teacher: @teacher %>
+
+<%= link_to '戻る', url_for(:back)  %> 

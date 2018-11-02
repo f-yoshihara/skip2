@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :followings, only: [:index]
+  resources :followings, only: [:index, :create, :destroy]
   resources :rooms, only: [:index, :show]
   resources :schools, only: [:index, :show, :edit, :update]
   resources :teachers

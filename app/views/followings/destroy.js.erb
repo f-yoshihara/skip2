@@ -1,0 +1,8 @@
+$('#<%= @company_id %>').html(
+  "<%= escape_javascript('フォローする') %>"
+);
+
+$('#<%= @company_id %>').attr({
+  'data-method': "post",
+  href:  "<%= escape_javascript('/followings?following_id=' + @company_id) %>"
+});

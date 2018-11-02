@@ -5,6 +5,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @teacher = Teacher.find_by(session[:teacher].to_s)
   end
 
   def new
