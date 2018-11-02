@@ -2,7 +2,7 @@ class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
   before_action :check_logined, only: [:show, :edit, :update, :destroy]
   def show
-    @teachers_stocks = @teacher.teachers_stocks
+    @followings = @teacher.followings
   end
 
   def new
