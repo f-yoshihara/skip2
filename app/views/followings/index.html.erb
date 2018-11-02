@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<h1>フォローしている会社一覧</h1>
+
+<% @followings.each do |following| %>
+  <p>
+    <%= link_to "#{following.company.name}", company_path(following.company_id) %>
+  </p>
+<% end %>

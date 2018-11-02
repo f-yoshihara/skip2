@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_051343) do
+ActiveRecord::Schema.define(version: 2018_11_01_110733) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -110,6 +110,15 @@ ActiveRecord::Schema.define(version: 2018_10_31_051343) do
     t.index ["occupation_id"], name: "index_entry_sheets_on_occupation_id"
     t.index ["recruitment_id"], name: "index_entry_sheets_on_recruitment_id"
     t.index ["student_id"], name: "index_entry_sheets_on_student_id"
+  end
+
+  create_table "followings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "teacher_id"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_followings_on_company_id"
+    t.index ["teacher_id"], name: "index_followings_on_teacher_id"
   end
 
   create_table "industries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -304,6 +313,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_051343) do
   add_foreign_key "entry_sheets", "occupations"
   add_foreign_key "entry_sheets", "recruitments"
   add_foreign_key "entry_sheets", "students"
+  add_foreign_key "followings", "companies"
+  add_foreign_key "followings", "teachers"
   add_foreign_key "interests", "industries"
   add_foreign_key "interests", "occupations"
   add_foreign_key "interests", "students"

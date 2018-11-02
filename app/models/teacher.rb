@@ -1,4 +1,5 @@
 class Teacher < ApplicationRecord
+  has_many :followings
   has_secure_password
   belongs_to :school
   validates :name,

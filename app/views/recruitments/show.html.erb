@@ -21,7 +21,7 @@
 </p>
 
 <h1>
-  仕事内容は？
+  何をやるの？
 </h1>
 
 <div>
@@ -37,7 +37,7 @@
 </div>
 
 <h1>
-  採用データ
+  職場体験詳細
 </h1>
 
 <p>
@@ -54,51 +54,49 @@
 <%# mapのサイズ等cssは recruitment.scssに書いてある %>
 <div id="map"></div>
 
-<%# <p> %>
-  <%# <strong>日程:</strong> %>
-  <%#= @recruitment.schedule.year %>
-  <%# 年 %>
-  <%#=  @recruitment.schedule.mon %>
-  <%# 月 %>
-  <%#= @recruitment.schedule.day %>
-  <%# 日 %>
-<%# </p> %>
-
-<%# <p> %>
-  <%# <strong>時間:</strong> %>
-  <%#= @recruitment.start_time.hour %>
-  <%# : %>
-  <%#= @recruitment.start_time.min %>
-  <%# ~ %>
-  <%#= @recruitment.end_time.hour %>
-  <%# : %>
-  <%#= @recruitment.end_time.min %>
-<%# </p> %>
-
-<%# <p> %>
-  <%# <strong>応募締め切り:</strong> %>
-  <%#= @recruitment.deadline.year %>
-  <%# 年 %>
-  <%#= @recruitment.deadline.mon %>
-  <%# 月 %>
-  <%#= @recruitment.deadline.day %>
-  <%# 日 %>
-<%# </p> %>
-
-<%# 臨時で給料→元は持ち物 %>
 <p>
-  <strong>給料:</strong>
+  <strong>日程:</strong>
+  <%= @recruitment.schedule.year %>
+  年
+  <%= @recruitment.schedule.mon %>
+  月
+  <%= @recruitment.schedule.day %>
+  日
+</p>
+
+<p>
+  <strong>時間:</strong>
+  <%= @recruitment.start_time.hour %>
+  :
+  <%= @recruitment.start_time.min %>
+  ~
+  <%= @recruitment.end_time.hour %>
+  :
+  <%= @recruitment.end_time.min %>
+</p>
+
+<p>
+  <strong>応募締め切り:</strong>
+  <%= @recruitment.deadline.year %>
+  年
+  <%= @recruitment.deadline.mon %>
+  月
+  <%= @recruitment.deadline.day %>
+  日
+</p>
+
+<p>
+  <strong>持ち物:</strong>
   <%= @recruitment.belongings %>
 </p>
 
-<%# 臨時で求人番号→元は服装 %>
 <p>
-  <strong>求人番号:</strong>
+  <strong>服装:</strong>
   <%= @recruitment.clothing %>
 </p>
 
 <p>
-  <strong>その他:</strong>
+  <strong>その他注意事項:</strong>
   <%= @recruitment.notices %>
 </p>
 
@@ -136,13 +134,13 @@
     <% end %>
   <% end %>
 <% else %>
-  <%# <div class = "btn"> %>
-    <%#= link_to('応募する', login_index_path, class: :'btn btn-info float-right') %>
-  <%# </div> %>
+  <div class = "btn">
+    <%= link_to('応募する', login_user_path, class: :'btn btn-info float-right') %>
+  </div>
 
-  <%# <div class = "btn"> %>
-    <%#= link_to('ストックする', login_index_path, class: :'btn btn-success float-right') %>
-  <%# </div> %>
+  <div class = "btn">
+    <%= link_to('ストックする', login_user_path, class: :'btn btn-success float-right') %>
+  </div>
 <% end %>
 
 <script>

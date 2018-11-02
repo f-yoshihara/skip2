@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :rooms, only: [:show]
+  resources :followings, only: [:index, :create, :destroy]
+  resources :rooms, only: [:index, :show]
   resources :schools, only: [:index, :show, :edit, :update]
   resources :teachers
   resources :employment_entries, only: [:new, :create, :destroy]

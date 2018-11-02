@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>名前:</strong>
+  <%= @teacher.name %>
+</p>
+
+<p>
+  <strong>学校名:</strong>
+  <%= @teacher.school.name %>
+</p>
+
+<p>
+  <%= link_to 'フォローしている会社', followings_path(id: @teacher.id), class: :'nav-link' %>
+</p>
+
+<%= link_to 'Edit', edit_teacher_path(@teacher) %>
