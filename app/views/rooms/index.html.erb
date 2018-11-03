@@ -1,1 +1,7 @@
-<%= link_to 'Show', @user %>
+<p id="notice"><%= notice %></p>
+<% @chats.each do |chat| %>
+  <%= link_to chat.company.name, room_path(chat) %>
+  <br>
+<% end %>
+
+<%= link_to '', new_recruitment_path %>
