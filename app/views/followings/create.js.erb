@@ -3,5 +3,5 @@ $('#<%= @company_id %>').html(
 );
 $('#<%= @company_id %>').attr({
   'data-method': "delete",
-  href:  "<%= escape_javascript('/followings/' + @company_id) %>"
+  href:  "<%= escape_javascript('/followings/' + @following.id.to_s + '?company_id=' + @company_id) %>"
 });

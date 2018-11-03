@@ -4,5 +4,5 @@ $('#<%= @company_id %>').html(
 
 $('#<%= @company_id %>').attr({
   'data-method': "post",
-  href:  "<%= escape_javascript('/followings?following_id=' + @company_id) %>"
+  href:  "<%= escape_javascript('/followings?company_id=' + @company_id) %>"
 });

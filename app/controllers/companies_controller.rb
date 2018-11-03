@@ -1,11 +1,11 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_following, only: [:show]
   def index
     @companies = Company.all
   end
 
   def show
-    @teacher = Teacher.find_by(session[:teacher].to_s)
   end
 
   def new
@@ -50,6 +50,11 @@ class CompaniesController < ApplicationController
   end
 
   private
+    def set_following
+      # 例外処理必要
+      @following = current_teacher.followings.find_by(company_id: params[:id])
+    end
+
     def set_company
       @company = Company.find(params[:id])
     end
