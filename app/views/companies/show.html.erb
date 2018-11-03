@@ -14,7 +14,7 @@
   <%= link_to '企業ホームページ', @company.url %>
 </p>
 <% if session[:teacher] %>
-  <%= render 'buttons', company: @company, following: @following %>
+  <%= render 'buttons', company: @company, following: @following, chat: @chat %>
 <% end %>
 
 <%= link_to '戻る', url_for(:back)  %> 

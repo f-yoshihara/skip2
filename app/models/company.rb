@@ -1,5 +1,6 @@
 class Company < ApplicationRecord
   has_many :followings
+  has_many :chats
   acts_as_taggable
   acts_as_taggable_on :industries
   has_secure_password

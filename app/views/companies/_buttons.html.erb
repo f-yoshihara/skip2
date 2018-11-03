@@ -1,14 +1,19 @@
-<%# if teacher.followings.where(company_id: company).exists? %>
 <% if following %>
   <div class = "btn">
-    <%= link_to('フォロー中', following_path(following, company_id: company), method: :delete, class: :'btn btn-success float-right', id: "#{company.id}", remote: true) %>
+    <%= link_to('フォロー中', following_path(following, company_id: company), method: :delete, class: :'btn btn-success float-right', id: "follow#{company.id}", remote: true) %>
   </div>
 <% else %>
   <div class = "btn">
-    <%= link_to('フォローする', followings_path(company_id: company), method: :post, class: :'btn btn-success float-right', id: "#{company.id}", remote: true) %>
+    <%= link_to('フォローする', followings_path(company_id: company), method: :post, class: :'btn btn-success float-right', id: "follow#{company.id}", remote: true) %>
   </div>
 <% end %>
 
-<div class = "btn">
-  <%= link_to('話を聞いてみたい', following_path(company), method: :delete, class: :'btn btn-success float-right', id: "#{company.id}", remote: true) %>
-</div>
+<% if chat %>
+  <div class = "btn">
+    <%= link_to('企業に連絡しました', room_path(chat, company_id: company), method: :delete, class: :'btn disabled float-right', id: :chat_btn, remote: true) %>
+  </div>
+<% else %>
+  <div class = "btn">
+    <%= link_to('話を聞いてみたい', rooms_path(company_id: company), method: :post, class: :'btn btn-success float-right', id: :chat_btn, remote: true) %>
+  </div>
+<% end %>

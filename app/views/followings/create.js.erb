@@ -1,7 +1,7 @@
-$('#<%= @company_id %>').html(
+$('#<%= 'follow' + @company_id %>').html(
   "<%= escape_javascript('フォロー中') %>"
 );
-$('#<%= @company_id %>').attr({
+$('#<%= 'follow' + @company_id %>').attr({
   'data-method': "delete",
   href:  "<%= escape_javascript('/followings/' + @following.id.to_s + '?company_id=' + @company_id) %>"
 });

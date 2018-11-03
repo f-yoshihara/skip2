@@ -1,0 +1,7 @@
+$(chat_btn).html(
+  "<%= escape_javascript('企業に連絡しました') %>"
+);
+$(chat_btn).attr({
+  'data-method': "delete",
+  class: "disabled"
+});

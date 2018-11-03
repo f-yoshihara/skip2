@@ -1,5 +1,6 @@
 class School < ApplicationRecord
-  has_many :teacher
+  has_many :teachers
+  has_many :chats
   enum category: {
     general:0,
     agricultural:1,

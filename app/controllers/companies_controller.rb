@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_action :set_following, only: [:show]
+  before_action :set_company,   only: [:show, :edit, :update, :destroy]
+  before_action :set_following, only: :show
+  before_action :set_chat,      only: :show
   def index
     @companies = Company.all
   end
@@ -53,6 +54,11 @@ class CompaniesController < ApplicationController
     def set_following
       # 例外処理必要
       @following = current_teacher.followings.find_by(company_id: params[:id])
+    end
+
+    def set_chat
+      # 例外処理必要
+      @chat = current_teachers_school.chats.find_by(company_id: params[:id])
     end
 
     def set_company
