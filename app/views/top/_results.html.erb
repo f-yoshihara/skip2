@@ -20,19 +20,24 @@
             </span>
           <% end %>
 
-          <p>
-            体験日:
-            <%= result.schedule %>
-          </p>
+          <%# <p> %>
+            <%# 体験日: %>
+            <%#%= result.schedule %>
+          <%# </p> %>
 
-          <p>
-            締め切り:
-            <%= result.deadline %>
-          </p>
+          <%# <p> %>
+            <%# 締め切り: %>
+            <%#= result.deadline %>
+          <%# </p> %>
 
       <div class = "d-flex">
         <div id = "recruitment_status">
-          <p>現在の応募者数 <%= result.entries.size %>人/定員<%= result.capacity %>人</p>
+          <p>採用予定人数<%= result.capacity %>人</p>
+          <%# <p>現在の応募者数  %>
+          <%#= result.entries.size %>
+          <%# 人/定員 %>
+          <%#= result.capacity %>
+          <%# 人</p> %>
           <p>現在のストック数 <%= result.stocks.size %></p>
         </div>
 

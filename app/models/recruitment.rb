@@ -17,8 +17,8 @@ class Recruitment < ApplicationRecord
     presence: true
   validates :body,
     presence: true
-  validates :deadline,
-    presence: true
+  # validates :deadline,
+  #   presence: true
   validate :file_invalid?
   validates :prefecture,
   presence: true
@@ -28,12 +28,12 @@ class Recruitment < ApplicationRecord
   presence: true
   validates :capacity,
   presence: true
-  validates :schedule,
-  presence: true
-  validates :start_time,
-  presence: true
-  validates :end_time,
-  presence: true
+  # validates :schedule,
+  # presence: true
+  # validates :start_time,
+  # presence: true
+  # validates :end_time,
+  # presence: true
   validates :culture,
   presence: true
   has_one :job
