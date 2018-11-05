@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <% @chats.each do |chat| %>
-  <%= link_to chat.company.name, room_path(chat) %>
+  <%= link_to chat.counterparty(@myparty), room_path(chat) %>
   <br>
 <% end %>
 

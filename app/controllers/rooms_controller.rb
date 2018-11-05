@@ -1,12 +1,14 @@
 class RoomsController < ApplicationController
-  before_action :set_school,  only: :create
+  before_action :set_school, only: :create
   before_action :set_chat, only: :show
 
   def index
     if current_teacher
-      @chats = set_school.chats
+      @myparty = set_school
+      @chats = @myparty.chats
     elsif current_staff
-      @chats = set_company.chats
+      @myparty = set_company
+      @chats = @myparty.chats
     end
   end
 
