@@ -21,21 +21,6 @@
     <%= text_field_tag 'company[industry_list]', @company.industry_list.join(',') %>
   </div>
 
-  <%# <div class="field"> %>
-    <%#= form.label :password_digest %>
-    <%#= form.text_field :password_digest %>
-  <%# </div> %>
-
-  <div class="field">
-    <%= form.label :password, 'パスワード' %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password_confirmation, 'パスワード再入力' %>
-    <%= form.password_field :password_confirmation %>
-  </div>
-
   <div class="field">
     <%= form.label :established, '設立年月日' %>
     <%= form.date_select :established %>

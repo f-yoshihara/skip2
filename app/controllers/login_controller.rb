@@ -18,7 +18,7 @@ class LoginController < ApplicationController
       reset_session
       session[:staff] = staff.id
       cookies.encrypted[:staff_id] = staff.id
-      redirect_to recruitment_list_index_path
+      redirect_to staff_path(staff)
     else
       flash_reset
       render 'staff'

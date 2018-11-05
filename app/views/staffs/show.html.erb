@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Company:</strong>
-  <%= @staff.company %>
+  <strong>会社名:</strong>
+  <%= @staff.company.name %>
 </p>
 
 <p>
-  <strong>name:</strong>
+  <strong>名前:</strong>
   <%= @staff.name %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @staff.password_digest %>
 </p>
 
 <p>
@@ -20,6 +15,13 @@
   <%= @staff.email %>
 </p>
 
+<p>
+  <%= link_to 'メッセージ一覧', rooms_path %>
+</p>
+
+<p>
+  <%= link_to '企業情報', company_path(@staff.company) %>
+</p>
 
 <%= link_to 'Edit', edit_staff_path(@staff) %> |
 <%= link_to 'Back', staffs_path %>

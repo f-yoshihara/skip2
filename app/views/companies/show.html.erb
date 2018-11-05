@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>会社概要:</strong>
+  <%= @company.overview %>
+</p>
+
+<p>
   <strong>設立年:</strong>
   <%= @company.established %>
 </p>
@@ -15,6 +20,10 @@
 </p>
 <% if session[:teacher] %>
   <%= render 'buttons', company: @company, following: @following, chat: @chat %>
+<% end %>
+
+<% if session[:staff] %>
+  <%= link_to '企業情報編集', edit_company_path(@company) %>
 <% end %>
 
 <%= link_to '戻る', url_for(:back)  %> 
