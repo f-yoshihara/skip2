@@ -2,6 +2,8 @@ class CompaniesController < ApplicationController
   before_action :set_company,   only: [:show, :edit, :update, :destroy]
   before_action :set_following, only: :show
   before_action :set_chat,      only: :show
+  before_action :check_logined, only: [:edit, :update, :destroy]
+
   def index
     @companies = Company.all
   end
@@ -52,13 +54,11 @@ class CompaniesController < ApplicationController
 
   private
     def set_following
-      # 例外処理必要
-      @following = current_teacher.followings.find_by(company_id: params[:id])
+      @following = current_teacher.followings.find_by(company_id: params[:id]) if session[:teacher]
     end
 
     def set_chat
-      # 例外処理必要
-      @chat = current_teachers_school.chats.find_by(company_id: params[:id])
+      @chat = current_teachers_school.chats.find_by(company_id: params[:id]) if session[:teacher]
     end
 
     def set_company
@@ -67,5 +67,20 @@ class CompaniesController < ApplicationController
 
     def company_params
       params.require(:company).permit(:name, :password, :password_confirmation, :established, :url, :industry_list)
+    end
+
+    def check_logined
+      if session[:staff]
+        begin
+          @staff = Staff.find(session[:staff])
+        rescue ActiveRecord::RecordNotFound
+          reset_session
+        end
+      end
+
+      unless @staff
+        flash[:referer] = request.fullpath
+        redirect_to login_staff_path
+      end
     end
 end
