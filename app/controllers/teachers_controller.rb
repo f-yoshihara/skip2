@@ -12,6 +12,7 @@ class TeachersController < ApplicationController
   end
 
   def edit
+    @schools = School.all
   end
 
   def create

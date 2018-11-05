@@ -1,5 +1,5 @@
 <% unless @results.to_sql == "SELECT `recruitments`.* FROM `recruitments` WHERE `recruitments`.`status` = 1" %>
-    <div><%= "検索結果は#{@results.size.to_s}件でした。" %></div>
+    <div><%#= "検索結果は#{@results.size.to_s}件でした。" %></div>
 <% end %>
 <% @results_of_page.each do |result| %>
 
