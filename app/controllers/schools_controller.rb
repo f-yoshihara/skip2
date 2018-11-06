@@ -32,6 +32,10 @@ class SchoolsController < ApplicationController
     end
   end
 
+  def typeahead_action
+    render json: School.select("#{params[:item]}").where(School.arel_table["#{params[:item]}".to_sym].matches("%#{params[:term]}%")).uniq
+  end
+
   private
     def set_school
       @school = School.find(params[:id])

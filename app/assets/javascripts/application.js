@@ -20,3 +20,6 @@
 //= require bootstrap-sprockets
 
 //= require jquery.jpostal 
+
+//= require typeahead.bundle.min
+//= require autocomp
