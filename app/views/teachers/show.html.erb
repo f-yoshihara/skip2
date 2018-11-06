@@ -11,11 +11,16 @@
 </p>
 
 <p>
+  <%= link_to '学校情報確認', school_path(@teacher.school) %>
+</p>
+
+<p>
   <%= link_to 'フォローしている会社一覧', followings_path %>
 </p>
 
 <p>
-  <%= link_to 'メッセージ一覧', rooms_path %>
+  <%= link_to 'チャット一覧', rooms_path %>
 </p>
 
-<%= link_to 'Edit', edit_teacher_path(@teacher) %>
+<p><%= link_to 'マイページ編集', edit_teacher_path(@teacher) %></p>
+<p><%= link_to '戻る', :back %></p>

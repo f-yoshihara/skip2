@@ -1,3 +1,6 @@
+<%= javascript_include_tag "typeahead.bundle.min" %>
+<%= javascript_include_tag "autocomp" %>
+
 <%= form_with(model: teacher, local: true) do |form| %>
   <% if teacher.errors.any? %>
     <div id="error_explanation">
@@ -31,15 +34,10 @@
     <%= form.text_field :email %>
   </div>
 
-  <div class="field">
-    <%= form.label :学校名 %>
-    <%= form.collection_select( :school_id, schools, :id, :name) %>
-  </div>
-
   <%= fields_for @school do |school_form| %>
     <div class="field">
       <%= school_form.label :name, '学校名' %>
-      <%= school_form.text_field :name %>
+      <%= school_form.text_field :name, class: 'form-control typeahead', id: 'school_name', autocomplete: 'on' %>
     </div>
   <% end %>
 

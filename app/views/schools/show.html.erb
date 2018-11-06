@@ -15,4 +15,7 @@
   <%= @school.overview %>
 </p>
 
-<%= link_to 'Edit', edit_school_path(@school) %> |
+<% if session[:teacher] %>
+  <%= link_to '編集', edit_school_path(@school) %></br>
+<% end %>
+<%= link_to '戻る', :back %> 
