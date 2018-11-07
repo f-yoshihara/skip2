@@ -8,7 +8,6 @@ class TeachersController < ApplicationController
   def new
     @teacher = Teacher.new
     @school  = School.new
-    @schools = School.all
   end
 
   def edit
@@ -23,9 +22,9 @@ class TeachersController < ApplicationController
     if @teacher.save
       reset_session
       session[:teacher] = @teacher.id
-      redirect_to root_path
+      redirect_to root_path and return
     else
-      redirect_to root_path
+      redirect_to new_teacher_path and return
     end
   end
 
