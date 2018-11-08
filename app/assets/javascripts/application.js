@@ -22,5 +22,6 @@
 
 //= require typeahead.bundle.min
 //= require autocomp
+//= require post_chat_message
 
 //= require_tree .

@@ -6,8 +6,9 @@
 </div>
 
 <form>
-  <label>Say something:</label><br>
-  <input type="text" data-behavior="room_speaker">
+  <label>メッセージを入力してください</label><br>
+  <textarea id="message_area" cols="40" rows="8"></textarea>
+  <input type="submit" value="送信" onClick="postChatMessage()" />
   <input id="room_id" name="room_id" type="hidden" value="<%= @chat.id %>">
 </form>
 

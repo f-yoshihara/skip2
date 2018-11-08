@@ -18,11 +18,3 @@ $(document).on 'turbolinks:load', ->
     # サーバサイドのspeakアクションを呼び出してmessageパラメータとしてmessageを渡している。
     speak: (message) ->
       @perform 'speak', message: message
-
-    $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
-      if event.keyCode is 13 # return = send
-        # 上記のクライアントサイドのspeakアクションを実行している。
-        App.room.speak event.target.value
-        # valueを空にしている
-        event.target.value = ''
-        event.preventDefault()
