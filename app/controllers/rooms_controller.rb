@@ -13,6 +13,11 @@ class RoomsController < ApplicationController
   end
 
   def show
+    if @teacher = current_teacher
+      @teacher
+    elsif @staff = current_staff
+      @staff
+    end
     @messages = @chat.messages
   end
 
