@@ -10,6 +10,11 @@
   <textarea id="message_area" cols="40" rows="8"></textarea>
   <input type="submit" value="送信" onClick="postChatMessage()" />
   <input id="room_id" name="room_id" type="hidden" value="<%= @chat.id %>">
+  <% if session[:teacher] %>
+    <input id="school" name="school" type="hidden" value="true">
+  <% else %>
+    <input id="school" name="school" type="hidden" value="false">
+  <% end %>
 </form>
 
 <%= link_to '戻る', :rooms %> 

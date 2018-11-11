@@ -1,18 +1,18 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    identified_by :current_user
+    identified_by :current_speaker
     
     def connect
-      self.current_user = find_verified_user
+      self.current_speaker = find_verified_user
     end
 
     protected
     
     def find_verified_user
-      if current_user = 
+      if current_speaker = 
         Teacher.find_by(id: cookies.encrypted[:teacher_id]) ||
         Staff.find_by(id: cookies.encrypted[:staff_id])
-        current_user
+        current_speaker
       else
         reject_unauthorized_connection
       end
