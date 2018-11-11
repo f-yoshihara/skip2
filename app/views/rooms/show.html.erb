@@ -2,7 +2,7 @@
 <h1><%= @chat.company.name %></h1>
 
 <div id="messages">
-  <%= render @messages %>
+  <%= render @messages, speaker: @speaker %>
 </div>
 
 <form>
