@@ -50,7 +50,7 @@
           <%# '人</h6> %>
           <% if current_user %>
             <% if current_user.stocks.where(recruitment_id: result).exists? %>
-                <%= link_to('済み', stock_path(result), method: :delete, class: :'btn btn-success float-right', id: "#{result.id}", remote: true, style: :'opacity:0.4;') %>
+                <%= link_to('ストック済み', stock_path(result), method: :delete, class: :'btn btn-success float-right', id: "#{result.id}", remote: true, style: :'opacity:0.4;') %>
             <% else %>
                 <%= link_to('お気に入り', stocks_path(recruitment_id: result), method: :post, class: :'btn btn-success float-right', id: "#{result.id}", remote: true) %>
             <% end %>

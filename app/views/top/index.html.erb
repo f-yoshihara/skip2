@@ -38,7 +38,7 @@
       </p>
 
       <%# <p class="sidebar"> %>
-      <%#%= f.label :開催日 %>
+      <%#= f.label :開催日 %>
       <%#= f.search_field :deadline , class: :'form-control'%>
       <%# </p> %>
 
@@ -50,7 +50,6 @@
       <%= f.submit "検索" ,class: :'sidebar btn btn-light btn-block'%>
     <% end %>
 
-    <%# <p>タグ一覧</p> %>
     <% @tags_industry.each do |tag| %>
         <%= link_to tag, {:action => :index, :industry_tag => tag.name}, class: :'sidebar-tag btn btn-pill btn-block badge-info sidebar rounded' %>
     <% end %>
