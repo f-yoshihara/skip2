@@ -17,20 +17,17 @@ class TeachersController < ApplicationController
   end
 
   def create
-    @teacher = Teacher.new(teacher_params)
-    unless @teacher.school
-      create_school
+    Teacher.transaction do
+      @teacher = Teacher.new(teacher_params)
+      @school = @teacher.build_school(school_params)
+      @school.save!
+      @teacher.save!
     end
-
-    if @teacher.save
-      reset_session
-      session[:teacher] = @teacher.id
-      redirect_to @teacher and return
-      # format.html { redirect_to @teacher, notice: '新規登録が完了しました。' } and return
-      # format.json { render :show, status: :created, location: @teacher }
-    else
-      redirect_to action: :new and return
-    end
+    reset_session
+    session[:teacher] = @teacher.id
+    redirect_to @teacher and return
+    rescue => e
+      render plain: e.message
   end
 
   def update
@@ -54,13 +51,6 @@ class TeachersController < ApplicationController
   end
 
   private
-    def create_school
-      @school = @teacher.build_school(school_params)
-      unless @school.save
-        redirect_to action: :new and return
-      end
-    end
-
     def set_teacher
       @teacher = Teacher.find(params[:id])
     end
