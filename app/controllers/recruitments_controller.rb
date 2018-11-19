@@ -24,7 +24,7 @@ class RecruitmentsController < ApplicationController
 
     respond_to do |format|
       if @recruitment.save
-        format.html { redirect_to @recruitment, notice: 'Recruitment was successfully created.' }
+        format.html { redirect_to @recruitment, notice: '募集要項の作成が完了しました.' }
         format.json { render :show, status: :created, location: @recruitment }
       else
         format.html { render :new }
