@@ -1,6 +1,8 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
   before_action :check_logined, only: [:show, :edit, :update, :destroy]
+  # protect_from_forgery :except => [:create]
+
   def show
     @followings = @teacher.followings
   end
@@ -19,12 +21,15 @@ class TeachersController < ApplicationController
     unless @teacher.school
       create_school
     end
+
     if @teacher.save
       reset_session
       session[:teacher] = @teacher.id
-      redirect_to root_path and return
+      redirect_to @teacher and return
+      # format.html { redirect_to @teacher, notice: '新規登録が完了しました。' } and return
+      # format.json { render :show, status: :created, location: @teacher }
     else
-      redirect_to new_teacher_path and return
+      redirect_to action: :new and return
     end
   end
 
@@ -52,7 +57,7 @@ class TeachersController < ApplicationController
     def create_school
       @school = @teacher.build_school(school_params)
       unless @school.save
-        redirect_to root_path
+        redirect_to action: :new and return
       end
     end
 
@@ -79,6 +84,6 @@ class TeachersController < ApplicationController
     end
 
     def school_params
-      params.require(:school).permit(:name)
+      params.require(:school).permit(:name, :category)
     end
 end
