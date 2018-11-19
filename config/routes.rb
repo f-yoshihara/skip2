@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'interview/index'
   get 'top/jobs'
   get 'top/tag'
-  resources :entries, only: [:new, :create, :destroy]
+  resources :entries, only: [:index, :new, :create, :destroy, :edit, :update]
   resources :stocks,  only: [:index, :create, :destroy]
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
