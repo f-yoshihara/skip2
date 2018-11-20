@@ -6,9 +6,12 @@
 <% @entries.each do |entry| %>
   <p>
     <%= link_to "#{entry.recruitment.title}", recruitment_path(entry.recruitment_id) %>
-    <%= show_status(entry) %>
+    締め切り
     <%= entry.recruitment.deadline %>
-    <%= link_to '編集', edit_entry_path(entry) %>
+    <%= show_status(entry) %>
+    <% if entry.draft? %>
+      <%= link_to '編集', edit_entry_path(entry) %>
+    <% end %>
   </p>
 <% end %>
 
