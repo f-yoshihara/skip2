@@ -1,6 +1,7 @@
 class EntriesController < InheritedResources::Base
   before_action :set_user,  only: [:new, :show, :create, :edit, :index]
   before_action :set_entry, only: [:edit, :update, :show]
+  before_action :set_recruitment, only: [:show, :edit]
   def new
     @entry = Entry.new
     @recruitment = Recruitment.find(params[:format])
@@ -36,10 +37,6 @@ class EntriesController < InheritedResources::Base
     end
   end
 
-  def edit
-    @recruitment = @entry.recruitment
-  end
-
   private
     def set_user
       @user = current_user
@@ -47,6 +44,10 @@ class EntriesController < InheritedResources::Base
 
     def set_entry
       @entry = Entry.find(params[:id])
+    end
+
+    def set_recruitment
+      @recruitment = @entry.recruitment
     end
 
     def entry_params

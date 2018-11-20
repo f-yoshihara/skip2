@@ -1,14 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @entry.user %>
+  <%= @user.name %>
 </p>
 
-<p>
-  <strong>Recruitment:</strong>
-  <%= @entry.recruitment %>
-</p>
+<% unless @recruitment.question1.blank? %>
+  <p><%= @recruitment.question1 %></p>
+  <p><%= @entry.answer1 %></p>
+<% end %>
 
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>
+<% unless @recruitment.question2.blank? %>
+  <p><%= @recruitment.question2 %></p>
+  <p><%= @entry.answer2 %></p>
+<% end %>
+
+<% unless @recruitment.question3.blank? %>
+  <p><%= @recruitment.question3 %></p>
+  <p><%= @entry.answer3 %></p>
+<% end %>
+
+<% unless @recruitment.question4.blank? %>
+  <p><%= @recruitment.question4 %></p>
+  <p><%= @entry.answer4 %></p>
+<% end %>
+
+<% unless @recruitment.question5.blank? %>
+  <p><%= @recruitment.question5 %></p>
+  <p><%= @entry.answer5 %></p>
+<% end %>
+
+<% if @entry.draft? %>
+  <%= link_to 'Edit', edit_entry_path(@entry) %> 
+<% else %>
+  <p>上記の内容で応募が完了しています。</p>
+<% end %>
+<%= link_to '一覧へ戻る', entries_path %>
