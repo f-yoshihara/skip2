@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= form.fields_for @user do |user_form| %>
+  <%= form.fields_for user do |user_form| %>
     <div class="field">
       <%= user_form.label :name, '名前' %>
       <%= user_form.text_field :name %>

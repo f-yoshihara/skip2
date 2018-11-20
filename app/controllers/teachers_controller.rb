@@ -25,7 +25,7 @@ class TeachersController < ApplicationController
     end
     reset_session
     session[:teacher] = @teacher.id
-    redirect_to @teacher and return
+    redirect_to @teacher
     rescue => e
       render plain: e.message
   end
