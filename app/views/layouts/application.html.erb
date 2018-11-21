@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark">
       <%= link_to "Trigger", top_jobs_path, class: :'navbar-brand'%>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@
 
           <% elsif current_staff %>
             <li class="nav-item">
-              <%= link_to '採用者用ページ', recruitment_list_index_path, class: :'nav-link'%>
+              <%= link_to '採用担当者用ページ', staff_path(current_staff), class: :'nav-link'%>
             </li>
 
             <li class="nav-item">
