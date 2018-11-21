@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   }
   get 'line/index'
   get 'line/contract'
-  get 'recruitment_list/index'
   get 'get_photo/index'
   root 'top#index'
   resources :recruitments

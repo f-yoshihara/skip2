@@ -1,9 +1,9 @@
 class RecruitmentsController < ApplicationController
   before_action :set_recruitment, only: [:show, :edit, :update, :destroy]
-  before_action :check_logined, only: [:new, :edit, :update, :destroy]
+  before_action :check_logined, only: [:new, :edit, :update, :destroy, :index]
 
   def index
-    @recruitments = Recruitment.all
+    @recruitments = Recruitment.where(company_id: @staff.company)
   end
 
   def show

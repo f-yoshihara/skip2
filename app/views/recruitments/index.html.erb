@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>画像</th>
       <th>Company</th>
       <th>Occupation</th>
       <th>Status</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @recruitments.each do |recruitment| %>
       <tr>
+        <td><%= image_tag(url_for(controller: :get_photo, :id => recruitment), :size => '100x100') %></td>
         <td><%= recruitment.company.name %></td>
         <td><%= recruitment.occupation.category %></td>
         <td><%= recruitment.status %></td>
