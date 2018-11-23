@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= @user.name %>
+  <%= @entry.user.name %>
 </p>
 
 <% unless @recruitment.question1.blank? %>
@@ -34,4 +34,7 @@
 <% else %>
   <p>上記の内容で応募が完了しています。</p>
 <% end %>
-<%= link_to '一覧へ戻る', entries_path %>
+<% if current_staff %>
+  <p><%= link_to('応募者情報', user_path(@entry.user)) %></p>
+<% end %>
+<%= link_to '戻る', :back %>
