@@ -20,4 +20,7 @@
   <strong>学校名:</strong>
   <%= @user.school_name %>
 </p>
-<%= link_to 'Edit', edit_user_path(@user) %>
+<% if current_user %>
+  <%= link_to '編集', edit_user_path(@user) %>
+<% end %>
+<%= link_to '戻る', :back %>

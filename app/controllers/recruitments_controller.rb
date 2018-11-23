@@ -3,7 +3,7 @@ class RecruitmentsController < ApplicationController
   before_action :check_logined, only: [:new, :edit, :update, :destroy, :index]
 
   def index
-    @recruitments = Recruitment.where(company_id: @staff.company)
+    @recruitments = Recruitment.where(company_id: @staff.company).order(created_at: :desc)
   end
 
   def show

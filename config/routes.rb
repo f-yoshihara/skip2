@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :students, only: [:index, :show]
   resources :admin_entries, only: [:index, :show]
   get  '/typeahead' => 'schools#typeahead_action'
   resources :followings, only: [:index, :create, :destroy]
