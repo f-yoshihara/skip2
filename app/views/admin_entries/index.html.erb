@@ -1,2 +1,7 @@
-<h1>AdminEntries#index</h1>
-<p>Find me in app/views/admin_entries/index.html.erb</p>
+<% @entries.each do |entry| %>
+  <%= link_to("#{entry.user.name}様, #{entry.created_at}", entry_path(entry)) %>
+<% end %>
+<% if @entries.blank? %>
+  <p>まだ応募はありません</p>
+<% end %>
+<p><%= link_to '戻る', :back %></p>

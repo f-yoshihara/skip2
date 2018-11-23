@@ -134,6 +134,10 @@
           </div>
         <% end %>
       <% end %>
+    <% elsif current_staff %>
+      <div class = "btn">
+        <%= link_to('応募一覧', admin_entries_path(id: @recruitment), class: :'btn btn-success float-right') %>
+      </div>
     <% else %>
       <div class = "btn">
         <%= link_to('応募する', login_user_path, class: :'btn btn-info float-right') %>
@@ -145,6 +149,7 @@
     <% end %>
   </div>
 </div>
+<%= link_to '戻る', :back %>
 <script>
 function initMap(latlng) {
   var map = new google.maps.Map(document.getElementById('map'), {
