@@ -2,6 +2,7 @@ class Teacher < ApplicationRecord
   has_many :followings
   has_secure_password
   belongs_to :school
+  accepts_nested_attributes_for :school
   validates :name,
     presence: true
   validates :password_digest,
