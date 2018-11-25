@@ -9,7 +9,7 @@ class TeachersController < ApplicationController
 
   def new
     @teacher = Teacher.new
-    @school  = School.new
+    @teacher.build_school
   end
 
   def edit
@@ -17,17 +17,18 @@ class TeachersController < ApplicationController
   end
 
   def create
-    Teacher.transaction do
-      @teacher = Teacher.new(teacher_params)
-      @school = @teacher.build_school(school_params)
-      @school.save!
-      @teacher.save!
+    @teacher = Teacher.new(teacher_params)
+    respond_to do |format|
+      if @teacher.save
+        reset_session
+        session[:teacher] = @teacher.id
+        format.html { redirect_to @teacher, notice: '登録が完了しました.' }
+        format.json { render :show, status: :created, location: @teacher }
+      else
+        format.html { render :new }
+        format.json { render json: @teacher.errors, status: :unprocessable_entity }
+      end
     end
-    reset_session
-    session[:teacher] = @teacher.id
-    redirect_to @teacher
-    rescue => e
-      render plain: e.message
   end
 
   def update
@@ -70,10 +71,14 @@ class TeachersController < ApplicationController
     end
 
     def teacher_params
-      params.require(:teacher).permit(:school_id, :name, :password, :password_confirmation, :email)
+      params.require(:teacher).permit(:name, :password, :password_confirmation, :email, school_attributes: [:name, :category])
     end
 
-    def school_params
-      params.require(:school).permit(:name, :category)
-    end
+    # def teacher_params
+    #   params.require(:teacher).permit(:school_id, :name, :password, :password_confirmation, :email)
+    # end
+
+    # def school_params
+    #   params.require(:school).permit(:name, :category)
+    # end
 end
