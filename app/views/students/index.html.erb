@@ -1,4 +1,4 @@
-<p>登録している生徒一覧</p>
+<p>あなたの学校で登録している生徒一覧</p>
 <% @students.each do |student| %>
   <p><%= link_to(student.name, student_path(student)) %></p>
 <% end %>

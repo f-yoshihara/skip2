@@ -1,2 +1,12 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<h1>生徒の活動状況</h1>
+<h2><%= @student.name %></h2>
+<h2><%= 'エントリーしている企業一覧' %></h2>
+<% @student.entries.each do |entry| %>
+  <% if entry.published? %>
+    <p><%= link_to(entry.recruitment.company.name, "/companies/#{entry.recruitment.company.id}") %></p>
+  <% end %>
+<% end %>
+<h2><%= 'ストックしている募集一覧' %></h2>
+<% @student.stocks.each do |stock| %>
+  <p><%= link_to(stock.recruitment.title, "/recruitments/#{stock.recruitment.id}") %></p>
+<% end %>

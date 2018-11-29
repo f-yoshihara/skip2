@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   before_action :check_logined, only: [:show, :index]
   before_action :set_school, only: [:index, :show]
+  before_action :set_student, only: [:show]
   def index
     @students = User.where(school: @school)
   end
@@ -9,6 +10,10 @@ class StudentsController < ApplicationController
   end
 
   private
+    def set_student
+      @student = User.find(params[:id])
+    end
+
     def set_school
       @school = current_teacher.school
     end
